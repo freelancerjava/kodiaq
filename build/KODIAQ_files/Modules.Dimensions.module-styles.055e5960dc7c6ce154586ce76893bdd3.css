@@ -1,0 +1,48 @@
+﻿/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* SKODA GLOBAL */
+div.k2ng-module-ImporterDimensionsModule {
+  background-color: #f3f3f3;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+div.k2ng-module-ImporterDimensionsModule .demensions-headline {
+  margin: 0;
+  padding: 0;
+}
+div.k2ng-module-ImporterDimensionsModule .img-layer {
+  padding-top: 10px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDimensionsModule .paragraph-layer {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDimensionsModule .paragraph-layer {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+div.k2ng-module-ImporterDimensionsModule figure img {
+  max-width: 100%;
+}
+div.k2ng-module-ImporterDimensionsModule .layer-link {
+  font-weight: 600 !important;
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDimensionsModule .layer-link {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZHVsZS1zdHlsZXMubGVzcyIsIkY6LzAxLVYyL193b3JrLzcvcy9Ta29kYS5LMk5HLlBsdWdpbnMvU2l0ZVByb3RvdHlwZXMvU2tvZGEuSzJORy5QbHVnaW5zLlNpdGVQcm90b3R5cGVzLkltcG9ydGVyL0Fzc2V0cy9sZXNzL21peGlucy9za29kYS1nbG9iYWwubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBRUEsR0FBRztFQUNDLHlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtFQUNBLG9CQUFBOztBQUpKLEdBQUcscUNBTUY7RUFDQyxTQUFBO0VBQ0EsVUFBQTs7QUFSRixHQUFHLHFDQVdDO0VBQ0ksaUJBQUE7O0FBSU4sUUFBbUM7RUFBbkMsR0FoQkMscUNBZUM7SUNvVEgsZUFBQTtJQUNHLGlCQUFBO0lBQ0EsZ0JBQUE7OztBRGxURixRQUFtQztFQUFuQyxHQW5CQyxxQ0FlQztJQ21WSCxlQUFBO0lBQ0csaUJBQUE7SUFDQSxnQkFBQTs7O0FEcFdKLEdBQUcscUNBd0JDLE9BQ0k7RUFDSSxlQUFBOztBQTFCWixHQUFHLHFDQThCRjtFQUNDLGdCQUFBOztBQUNBLFFBQW1DO0VBQW5DLEdBaENDLHFDQThCRjtJQzZWQSxlQUFBO0lBQ0csaUJBQUE7SUFDQSxnQkFBQSJ9 */

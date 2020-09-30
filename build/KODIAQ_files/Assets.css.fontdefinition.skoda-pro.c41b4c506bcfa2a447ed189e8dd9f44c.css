@@ -1,0 +1,64 @@
+﻿body {
+  font-family: "SkodaPro";
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-light.798fa35a86bb812bc1de9d36f922d250.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-lightitalic.08efc62404f31a5b55ac0730166e172f.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-regular.3b9009f234f857deff16c49f002b11b7.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-regularitalic.8c529914871cdc0dd5d0c2bf330ca431.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-medium.502491108d7efc7c13bdf491bea20da4.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-mediumitalic.0cb47e5bb4fd83fe3c0ddc67adb34cd5.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-bold.41ab138ddb0911e156d6853ae7364c7e.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-bolditalic.b3824343efb69b1b64e928b1c9f09985.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-extrabold.10d871b4e2f9fb7a25040f81af45cdbe.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SkodaPro";
+  src: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.font.skodapro-extrabolditalic.ae8596fe95d3b2f0534b46805a2c2581.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNrb2RhLXByby5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0ksYUFIUSxVQUdSOztBQUdKO0VBQ0ksYUFQUSxVQU9SO0VBQ0EsU0FBUywyREFBMkQsT0FBTyxXQUEzRTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7O0FBR0o7RUFDSSxhQWRRLFVBY1I7RUFDQSxTQUFTLGlFQUFpRSxPQUFPLFdBQWpGO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTs7QUFHSjtFQUNJLGFBckJRLFVBcUJSO0VBQ0EsU0FBUyw2REFBNkQsT0FBTyxXQUE3RTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7O0FBR0o7RUFDSSxhQTVCUSxVQTRCUjtFQUNBLFNBQVMsbUVBQW1FLE9BQU8sV0FBbkY7RUFDQSxnQkFBQTtFQUNBLGtCQUFBOztBQUdKO0VBQ0ksYUFuQ1EsVUFtQ1I7RUFDQSxTQUFTLDREQUE0RCxPQUFPLFdBQTVFO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTs7QUFHSjtFQUNJLGFBMUNRLFVBMENSO0VBQ0EsU0FBUyxrRUFBa0UsT0FBTyxXQUFsRjtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7O0FBR0o7RUFDSSxhQWpEUSxVQWlEUjtFQUNBLFNBQVMsMERBQTBELE9BQU8sV0FBMUU7RUFDQSxnQkFBQTtFQUNBLGtCQUFBOztBQUdKO0VBQ0ksYUF4RFEsVUF3RFI7RUFDQSxTQUFTLGdFQUFnRSxPQUFPLFdBQWhGO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTs7QUFHSjtFQUNJLGFBL0RRLFVBK0RSO0VBQ0EsU0FBUywrREFBK0QsT0FBTyxXQUEvRTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7O0FBR0o7RUFDSSxhQXRFUSxVQXNFUjtFQUNBLFNBQVMscUVBQXFFLE9BQU8sV0FBckY7RUFDQSxnQkFBQTtFQUNBLGtCQUFBIn0= */
