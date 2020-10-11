@@ -1,0 +1,206 @@
+/*==========  Desktop First Method  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 2560px) {
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image img {
+    min-width: auto !important;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure {
+    height: 850px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure img {
+    height: 100%;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media only screen and (max-width: 1366px) {
+  /**/
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    height: 500px;
+  }
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image img {
+    min-width: auto !important;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure {
+    height: 350px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure img {
+    height: 100%;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    height: 350px;
+  }
+  /**/
+  div.k2ng-module-ImporterHighlightsModule figure {
+    height: 300px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure img {
+    height: 100%;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout {
+    padding: 0;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  /*Disable Animation on Mobile Devices*/
+  .animated {
+    /*CSS transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+  }
+  .main-top-bg {
+    background-size: auto 100%;
+    min-height: 40vh;
+  }
+  .main-top-bg .banner-text-content {
+    display: none;
+  }
+  .main-bottom {
+    display: flex;
+  }
+  .video-header {
+    padding: 0;
+  }
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image img {
+    min-width: 100%;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure {
+    height: 350px;
+    padding: 10px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure img {
+    height: 100%;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-source_label1 {
+    padding: 0;
+  }
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    height: 200px;
+  }
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 20px;
+  }
+  .video .circle {
+    width: 50px;
+    height: 50px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 659px) {
+  .bottom-menu {
+    margin-top: -50px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .main-top-bg {
+    background-size: auto 100%;
+    min-height: 30vh;
+  }
+  /**/
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    height: 250px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure {
+    height: 240px;
+  }
+  div.k2ng-module-ImporterHighlightsModule figure img {
+    height: 100%;
+    width: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 480px) {
+  /**/
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    height: 150px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .main-top-bg {
+    background-size: auto 100%;
+    min-height: 30vh;
+  }
+  /**/
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+    position: relative;
+    height: 150px;
+  }
+}
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  /**/
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  /**/
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  /**/
+}
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  /**/
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  /**/
+}

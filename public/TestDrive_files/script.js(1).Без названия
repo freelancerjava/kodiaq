@@ -1,0 +1,158 @@
+$(function () {
+
+    /* Custom scrollbar */
+    var scrollbarSelect;
+    var scrollbarOptions = {
+        scrollbars: {
+            clickScrolling: true,
+            snapHandle: true,
+        },
+    };
+    $('textarea').overlayScrollbars(scrollbarOptions);
+
+    /* Select2 with custom scrollbar */
+    $('select').each(function () {
+        $(this).select2({
+            placeholder: $(this).data('placeholder') || 'Выберите значение',
+            minimumResultsForSearch: Infinity,
+        }).on('select2:select', function (e) { /* AFTER select */
+            $(e.currentTarget).parent().removeClass('error');
+            $(e.currentTarget).next().find('.select2-selection__rendered').addClass('select2-selection__rendered--success');
+        }).on('select2:open', function () { /* AFTER open */
+            setTimeout(function () {
+                scrollbarSelect = $('.select2-results__options').overlayScrollbars(scrollbarOptions).overlayScrollbars();
+            }, 0);
+        }).on('select2:closing', function () { /* BEFORE close */
+            scrollbarSelect.destroy();
+        });
+    });
+
+    /* Phone mask */
+    $('[type="tel"]').each(function () {
+        new IMask(this, {
+            mask: '+{7} (000) 000-00-00'
+        });
+    });
+
+    /* Number mask - inputmode for mobile, imask for desktop */
+    $('[inputmode="numeric"]').each(function () {
+        new IMask(this, {
+            mask: Number,
+            scale: 0,
+            min: 1,
+        });
+    });
+
+    /* Range sliders */
+    $('.range').each(function () {
+        var $this = $(this);
+        var slider = $this.find('.range__slider').get(0);
+        noUiSlider.create(slider, {
+            start: $this.data('start'),
+            step: $this.data('step'),
+            range: {
+                'min': $this.data('min'),
+                'max': $this.data('max')
+            },
+            connect: 'lower',
+            tooltips: true,
+            format: {
+                to: function (value) {
+                    if ($this.data('type') === 'year') {
+                        if (value <= 1) {
+                            return value + ' год'
+                        } else if (value >= 5) {
+                            return value + ' лет'
+                        } else {
+                            return value + ' года'
+                        }
+                    } else if ($this.data('type') === 'km') {
+                        return value + ' км'
+                    } else {
+                        return value
+                    }
+                },
+                from: function (value) {
+                    return value
+                }
+            }
+        });
+
+        var field = $this.find('.range__input').get(0);
+        slider.noUiSlider.on('update', function (values, handle) {
+            field.value = values[handle];
+            var tooltip = $(slider).find('.noUi-tooltip');
+            var origin = $(slider).find('.noUi-origin');
+            if (origin.attr('style') === 'transform: translate(0%, 0px); z-index: 4;') {
+                tooltip.addClass('noUi-tooltip--edge');
+            } else {
+                tooltip.removeClass('noUi-tooltip--edge');
+            }
+        });
+    });
+
+    /* File upload */
+    $('[type="file"]').change(function () {
+        var fileText = $(this).closest('.form-input').find('.form-input__filename');
+        fileText.text(this.value ? this.files[0].name : '');
+    });
+
+    /* Calendar (datepicker) */
+    $('.js-datepicker').datepicker({
+        container: '.form-input--date',
+        format: "dd/mm/yyyy",
+        startDate: new Date(),
+        language: "ru",
+        autoclose: true,
+        todayHighlight: true
+    }).each(function () {
+        new IMask(this, { mask: '00/00/0000' });
+    });
+
+    /* Input validation */
+    $(document).on('input change', '.form-input__input', function (e) {
+
+        /* disable custom scrollbar event on textarea */
+        if ($(this).hasClass('os-host-textarea')) {
+            return false;
+        }
+
+        var classValid = 'valid';
+        var classError = 'error';
+        var wrapper = $(this).closest('.form-input');
+
+        var classFilled = 'form-input__input--filled';
+        $(this).val() ? $(this).addClass(classFilled) : $(this).removeClass(classFilled);
+
+        var pattern = false;
+        if ($(this).data('pattern')) {
+            pattern = new RegExp($(this).data('pattern'), "i");
+        }
+
+        var isValid = false;
+        if ((pattern && pattern.test($(this).val())) || (!pattern && $(this).val())) {
+            isValid = true;
+        }
+
+        if (isValid) {
+            wrapper.addClass(classValid);
+            wrapper.removeClass(classError);
+        } else {
+            wrapper.removeClass(classValid);
+            if ($(this).is('[required]')) {
+                wrapper.addClass(classError);
+            }
+        }
+    });
+
+    /* Form submit */
+    $(document).on('submit', '.form', function (e) {
+        var $this = $(this);
+        var checkboxGroup = $this.find('.js-checkbox-group');
+        if (checkboxGroup.length && !(checkboxGroup.find(':checkbox:checked').length)) {
+            e.preventDefault();
+            checkboxGroup.find('.checkbox').addClass('error');
+            return false;
+        }
+    })
+});

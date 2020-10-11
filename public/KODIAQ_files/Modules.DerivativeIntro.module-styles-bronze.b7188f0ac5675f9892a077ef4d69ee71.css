@@ -1,0 +1,555 @@
+﻿/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* SKODA GLOBAL */
+div.k2ng-module-ImporterDerivativeIntroBronzeModule {
+  background: #fff;
+  position: relative;
+  padding: 35px 0 0 0;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule {
+    min-height: 487px;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule figcaption {
+  display: none;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .tagline {
+  font-style: italic;
+  max-width: 480px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .tagline {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+}
+@media (min-width: 1000px) and (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .tagline {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+@media (min-width: 660px) and (max-width: 999.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .tagline {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 200;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .tagline {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 200;
+    max-width: 240px;
+    max-height: 56px;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+  text-transform: uppercase;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 60px;
+    line-height: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 10px 0 20px 0;
+  }
+}
+@media (min-width: 1000px) and (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+@media (min-width: 660px) and (max-width: 999.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 60px;
+    line-height: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 53px !important;
+    margin: 10px 0 20px 0;
+  }
+}
+@media (min-width: 660px) and (max-width: 999.5px) and (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 5px 0 10px 0;
+  }
+}
+@media (max-width: 659.5px) and (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .headline {
+    font-size: 36px;
+    line-height: 36px;
+  }
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper {
+    margin: 0 auto;
+    display: block;
+    width: 600px;
+    position: relative;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  left: 583px;
+  top: 0;
+  padding: 0;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block .feature-icon {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: -91px;
+  width: 74px;
+  height: 74px;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block .feature-icon img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block .feature-label {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 800;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  width: 100%;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block .feature-text {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  max-height: 78px;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .car-image img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .car-image img {
+    margin: 0 auto;
+    display: block;
+    height: auto;
+    height: 300px;
+    width: 600px;
+  }
+}
+@media (min-width: 660px) and (max-width: 999.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .car-image img {
+    margin: 0 auto 20px;
+    display: block;
+    max-width: 90%;
+    max-width: 600px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .car-image img {
+    display: block;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info {
+  position: relative;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .from {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .from {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize {
+  padding-left: 10px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 800;
+  }
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize .disclaimer-index {
+    position: relative;
+    top: -15px;
+  }
+}
+@media (min-width: 660px) and (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 800;
+  }
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info .prize .disclaimer-index {
+    position: relative;
+    top: -10px;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info a {
+  display: inline;
+  padding-left: 10px;
+  text-decoration: underline;
+  color: #4ba82e;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info a {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 800;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info a {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 800;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .prize-info a:hover {
+  text-decoration: underline;
+  color: #377220;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions {
+    white-space: nowrap;
+    font-size: 0;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions {
+    padding: 20px 0;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper {
+  display: inline-block;
+  position: relative;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper {
+  display: inline-block;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 800;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 800;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .nedc-wltp-table {
+  display: table;
+  margin: auto;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .nedc-wltp-table .table-row {
+  display: table-row;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .nedc-wltp-table .table-row .table-cell {
+  display: table-cell;
+  padding-top: 5px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .value-label {
+    left: 0;
+    top: 6px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .value-label {
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 400;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .value-label-nedc-wltp-consumption {
+  padding-left: 0px !important;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .engine-Type {
+  display: block;
+  font-size: 10px;
+  margin-right: 10px;
+  line-height: 20px;
+  color: #4ba82e;
+  position: relative;
+  top: -1px;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .engine-value-oneLine span {
+  display: inline-block;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .values-wrapper .engine-subValue {
+  white-space: nowrap;
+  display: block;
+  color: #8b8b8b;
+  font-size: 12px;
+  font-weight: 800;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions .block-wrapper .icon {
+  color: #4ba82e;
+  font-size: 28px;
+  position: relative;
+  top: 9px;
+  display: inline-block;
+  margin-right: 10px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .block-wrapper {
+    width: 50%;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .block-wrapper {
+    width: 100%;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .emisions-wrapper {
+    padding-right: 15px;
+    text-align: right;
+  }
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .emisions-wrapper::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background-color: #b4b4b4;
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .emisions-wrapper {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .emisions-wrapper .emisions {
+  position: relative;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .consumption-wrapper {
+  text-align: left;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .consumption-wrapper {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .consumption-wrapper {
+    text-align: center;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.two-values .consumption-wrapper .consumption {
+  position: relative;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .block-wrapper {
+    width: auto;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .block-wrapper {
+    width: 100%;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .emisions-wrapper {
+    padding-right: 15px;
+    text-align: right;
+  }
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .emisions-wrapper::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background-color: #b4b4b4;
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .emisions-wrapper .emisions {
+  position: relative;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .consumption-wrapper {
+  text-align: center;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .consumption-wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .consumption-wrapper::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background-color: #b4b4b4;
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .consumption-wrapper {
+    text-align: center;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .consumption-wrapper .consumption {
+  position: relative;
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .range-wrapper {
+  text-align: left;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .range-wrapper {
+    padding-left: 15px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .range-wrapper {
+    text-align: center;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.three-values .range-wrapper .consumption {
+  position: relative;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .block-wrapper {
+    width: 50%;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .block-wrapper {
+    width: 100%;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value {
+    text-align: center;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .value-label {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 38px;
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .value-label {
+    top: 25px;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .consumption .value-label {
+    padding-left: 83px;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .consumption-and-emissions.one-value .emisions .value-label {
+    padding-left: 28px;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .buttons {
+    margin-top: 42px;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .buttons .btn {
+    margin: 0 5px;
+    min-width: 204px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterDerivativeIntroBronzeModule .bottom-information .buttons .btn {
+    margin: 7px 5px;
+  }
+}
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .separator {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin: 35px 0 0 0;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZHVsZS1zdHlsZXMtYnJvbnplLmxlc3MiLCJGOi8wMS1WMi9fd29yay83L3MvU2tvZGEuSzJORy5QbHVnaW5zL1NpdGVQcm90b3R5cGVzL1Nrb2RhLksyTkcuUGx1Z2lucy5TaXRlUHJvdG90eXBlcy5JbXBvcnRlci9Bc3NldHMvbGVzcy9taXhpbnMvc2tvZGEtZ2xvYmFsLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUVBLEdBQUc7RUFDQyxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7O0FBRUEsUUFBbUM7RUFBbkMsR0FMRDtJQU1LLGlCQUFBOzs7QUFOUixHQUFHLGdEQVNDO0VBQ0ksYUFBQTs7QUFWUixHQUFHLGdEQWFDO0VBQ0ksa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTs7QUFFQSxRQUFtQztFQUFuQyxHQW5CTCxnREFhQztJQ3NQQSxlQUFBO0lBQ0EsaUJBQUE7SUFDQSxnQkFBQTtJRGhQUSxtQkFBQTs7O0FDaVBSLFFEblB1Qyx3QkNtUEo7RUFBbkMsR0R0UUQsZ0RBYUM7SUMwUEksZUFBQTtJQUNBLGlCQUFBOzs7QURoUEEsUUFBbUMsdUJBQWdDO0VBQW5FLEdBeEJMLGdEQWFDO0lDeVNILGVBQUE7SUFDRyxpQkFBQTtJQUNBLGdCQUFBO0lEOVJRLG1CQUFBO0lBQ0EsbUJBQUE7OztBQUdKLFFBQW1DO0VBQW5DLEdBOUJMLGdEQWFDO0lDeVNILGVBQUE7SUFDRyxpQkFBQTtJQUNBLGdCQUFBO0lEeFJRLGdCQUFBO0lBQ0EsZ0JBQUE7OztBQWpDWixHQUFHLGdEQXFDQztFQUNJLHlCQUFBOztBQUVBLFFBQW1DO0VBQW5DLEdBeENMLGdEQXFDQztJQzhGQSxlQUFBO0lBQ0EsaUJBQUE7SUFDQSxnQkFBQTtJQUNBLHlCQUFBO0lENUZRLG1CQUFBO0lBQ0EscUJBQUE7OztBQzRGUixRRC9GdUMsd0JDK0ZKO0VBQW5DLEdEdklELGdEQXFDQztJQ21HSSxlQUFBO0lBQ0EsaUJBQUE7OztBRDNG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 */

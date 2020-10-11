@@ -1,0 +1,679 @@
+@import '../../styles/mixins';
+
+.home-welcome-page {
+  text-align: center;
+
+  .app {
+    text-align: center;
+  }
+
+  .rekit-logo {
+    animation: app-logo-spin infinite 10s linear;
+    height: 80px;
+  }
+
+  .app-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .app-title {
+    font-size: 1.5em;
+  }
+
+  .app-intro {
+    font-size: large;
+  }
+
+  ul,
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+
+  li {
+    margin-top: 10px;
+  }
+
+  a {
+    color: #0288d1;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p.memo {
+    width: 500px;
+    color: #999;
+    font-size: 12px;
+    line-height: 150%;
+    margin: auto;
+  }
+
+  @keyframes app-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.sa-carousel-controls .sa-carousel-control.sa-carousel-next.tablet-control {
+  background-image: url(https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-right-tablet-control.7d881e2….svg);
+  background-size: 100% 100%;
+  // margin-top: -30px;
+  height: 60px;
+  width: 32px;
+}
+
+.owl-carousel {
+  .owl-stage-outer {
+    position: relative;
+  }
+
+  .owl-dots {
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .owl-dot {
+    span {
+      border-radius: 50%;
+      margin: 15px;
+      width: 10px;
+      height: 10px;
+      display: block;
+      background: rgb(157, 199, 216);
+    }
+  }
+
+  .active {
+    span {
+      background: #ffffff;
+    }
+  }
+}
+
+.sa-tabs {
+  z-index: 10;
+}
+
+.highlights-module.SquaredImagesLayout {
+  .owl-dots {
+    bottom: 10px;
+    right: -25%;
+    margin: 5px;
+    z-index: 55;
+  }
+
+  .owl-dot {
+    span {
+      margin: 5px;
+      background: rgb(157, 199, 216);
+    }
+  }
+
+  .active {
+    span {
+      background: #777676;
+    }
+  }
+}
+
+@media (max-width: 999px) {
+  div.k2ng-module-ImporterHighlightsModule figure picture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.powerfull-beauty {
+  background-color: rgb(250, 250, 250);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .subheader {
+    width: 75%;
+    text-align: center;
+    margin: 25px;
+  }
+
+  padding: 50px;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.video-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+
+  .subheader {
+    text-align: center;
+    margin: 25px;
+    width: 75%;
+  }
+
+  .skoda {
+    margin-top: 20px;
+    font-size: 2.1875rem;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: rgb(75, 168, 46);
+    font-family: 'SKODA Next', sans-serif;
+  }
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-top: 50px;
+
+  img {
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+  }
+
+  video {
+    top: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+  position: relative;
+  height: 500px;
+
+  .circle {
+    &:hover {
+      cursor: pointer;
+    }
+
+    width: 100px;
+    height: 100px;
+    display: flex;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      svg {
+        width: 33px;
+        height: 33px;
+      }
+    }
+
+    svg {
+      width: 19px;
+      height: 19px;
+      fill: rgb(255, 255, 255);
+      transform: translateX(7%);
+    }
+  }
+}
+
+.beauty {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 5px;
+  background: rgb(255, 255, 255);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.05) -10px 4px 55px;
+    cursor: pointer;
+  }
+
+  .img {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  }
+}
+
+.dbNxPI {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.kvfSPz {
+  position: relative;
+}
+
+.bxvtys {
+  padding-top: 56.25%;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.dsTIND {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  outline: none;
+}
+
+.nav-links {
+  width: 80%;
+
+  .nav-list {
+    width: 100%;
+    text-align: right;
+  }
+}
+
+.dark {
+  background-color: #000000;
+}
+
+#main-manu {
+  display: block !important;
+  color: #28f70c;
+}
+
+.owl-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    padding-bottom: 0;
+    height: 100%;
+  }
+}
+
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    height: 420px;
+  }
+}
+
+.img-container {
+  height: 420px;
+}
+
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    padding-bottom: 0;
+    height: 300px;
+  }
+}
+
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image .frame-image {
+    position: absolute;
+    // width: 10%;
+    height: 350px;
+    top: 50px;
+    left: 50%;
+  }
+}
+
+div.k2ng-module-ImporterDerivativeIntroBronzeModule {
+  background: #fff;
+  position: relative;
+  padding: 0;
+}
+
+div.k2ng-module-ImporterDerivativeIntroBronzeModule .img-wrapper .feature-container .feature-block {
+  width: auto;
+}
+
+@media (max-width: 659.5px) {
+  #main-menu {
+    display: none;
+    flex-direction: column;
+
+    li {
+      display: block;
+    }
+  }
+}
+
+.mini-menu {
+  // display: none;
+  position: absolute;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.788);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 50px;
+  margin-top: -50px;
+  margin-bottom: 20px;
+  font-size: 24px;
+
+  li {
+    border-bottom: 1px solid rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+
+    a {
+      color: #ffffff !important;
+    }
+  }
+
+  box-shadow: 0 0 5px 0 #b4b4b4;
+}
+
+div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image img {
+  min-width: auto !important;
+}
+
+div.k2ng-module-ImporterDerivativePresentationModule ul.sa-tabs li {
+  display: inline !important;
+}
+
+h3 {
+  text-align: center;
+}
+
+#nav-is-sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.wrap-page {
+  padding-top: 70px;
+}
+
+body {
+  max-width: none;
+}
+
+.main-bg {
+  //   background: none !important;
+  //   background-image:url('https://az749841.vo.msecnd.net/sitesencom/alv1/15ea91f4-d348-46f0-a328-e4ea78190f28/skoda-kodiaq-m53-hero.7c638b09ac98738fb44b3b20145a2b17.fill-1920x500.jpg') !important;
+  //   background-repeat: no-repeat !important;
+  //   background-size: cover !important;
+  //   min-height: 90vh !important;
+  padding: 35px 0 !important;
+  //   background-position: -100px 0 !important;
+}
+
+.main-top-bg {
+  background-image: url('https://az749841.vo.msecnd.net/sitesencom/alv1/15ea91f4-d348-46f0-a328-e4ea78190f28/skoda-kodiaq-m53-hero.7c638b09ac98738fb44b3b20145a2b17.fill-1920x500.jpg') !important;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+  min-height: 70vh;
+
+  padding-bottom: 20px;
+  padding-left: 20px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  color: #ffffff;
+
+  .banner-title {
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+  }
+
+  .banner-tagline {
+    font-size: 16px;
+    line-height: 250%;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  .banner-button {
+    span a {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.main-bottom {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(121, 119, 119, 0.445);
+
+  .banner-text-content {
+    text-align: center;
+  }
+
+  .banner-title {
+    font-size: 36px;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
+  }
+
+  .banner-tagline {
+    font-size: 16px;
+    line-height: 250%;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  .banner-button {
+    span a {
+      color: #ffffff !important;
+    }
+  }
+}
+
+.bottom-menu {
+  margin-top: -70px;
+
+  ul {
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    background: #000000;
+    color: #ffffff;
+
+    li {
+      a {
+        color: #ffffff !important;
+
+        &:hover {
+          color: #4ba82e !important;
+          text-decoration: none;
+        }
+      }
+    }
+
+    li:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+}
+
+.section{
+  position: relative;
+}
+
+.gallery {
+  background-color: #3B3B3B;
+  padding: 50px 20px;
+
+  .gallery-headline {
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    padding: 0;
+    margin: 0;
+    line-height: 120%;
+  }
+}
+
+.images {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  height: 350px;
+
+  i,
+  span,
+  img:hover {
+    cursor: pointer;
+  }
+
+  .square,
+  .small-square,
+  .small-landscape {
+    img {
+      transition: transform 3s;
+
+
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.3, 1.3);
+        transition: transform 3s;
+      }
+    }
+  }
+
+
+  .square {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+
+    i {
+      position: absolute;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    span {
+      border: #fff 2px solid;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      display: block;
+    }
+  }
+
+  .small-square {
+    height: 150px;
+    width: 150px;
+
+    img {
+      height: 120%;
+      width: auto;
+    }
+  }
+
+  .small-square,
+  .small-landscape {
+    margin: 2px;
+    overflow: hidden;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      position: absolute;
+    }
+  }
+
+  .small-landscape {
+    height: 150px;
+    width: 300px;
+
+    img {
+      height: auto;
+      width: 120%;
+    }
+  }
+
+  .shuffle-1,
+  .shuffle-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .top,
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}

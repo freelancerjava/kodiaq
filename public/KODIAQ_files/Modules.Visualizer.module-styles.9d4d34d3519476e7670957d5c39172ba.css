@@ -1,0 +1,22 @@
+﻿/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* SKODA GLOBAL */
+div.k2ng-module-ImporterVisualizerModule {
+  position: relative;
+  padding: 25px 0;
+  background: #000;
+}
+div.k2ng-module-ImporterVisualizerModule .visualizer-wrapper {
+  position: relative;
+}
+div.k2ng-module-ImporterVisualizerModule .visualizer-wrapper iframe {
+  border: 0 !important;
+  min-height: 50px;
+  height: 640px;
+  width: 100%;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZHVsZS1zdHlsZXMubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBRUEsR0FBRztFQUNDLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBOztBQUhKLEdBQUcscUNBSUM7RUFDSSxrQkFBQTs7QUFMUixHQUFHLHFDQUlDLG9CQUVJO0VBQ0ksb0JBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7RUFDQSxXQUFBIn0= */

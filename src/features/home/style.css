@@ -1,0 +1,389 @@
+.home-welcome-page {
+  text-align: center;
+}
+.home-welcome-page .app {
+  text-align: center;
+}
+.home-welcome-page .rekit-logo {
+  animation: app-logo-spin infinite 10s linear;
+  height: 80px;
+}
+.home-welcome-page .app-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+.home-welcome-page .app-title {
+  font-size: 1.5em;
+}
+.home-welcome-page .app-intro {
+  font-size: large;
+}
+.home-welcome-page ul,
+.home-welcome-page li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.home-welcome-page ul {
+  margin-top: 20px;
+}
+.home-welcome-page li {
+  margin-top: 10px;
+}
+.home-welcome-page a {
+  color: #0288d1;
+  text-decoration: none;
+}
+.home-welcome-page a:hover {
+  text-decoration: underline;
+}
+.home-welcome-page p.memo {
+  width: 500px;
+  color: #999;
+  font-size: 12px;
+  line-height: 150%;
+  margin: auto;
+}
+@keyframes app-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sa-carousel-controls .sa-carousel-control.sa-carousel-next.tablet-control {
+  background-image: url(https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-right-tablet-control.7d881e2….svg);
+  background-size: 100% 100%;
+  height: 60px;
+  width: 32px;
+}
+.owl-carousel .owl-stage-outer {
+  position: relative;
+}
+.owl-carousel .owl-dots {
+  position: absolute;
+  bottom: 100px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.owl-carousel .owl-dot span {
+  border-radius: 50%;
+  margin: 15px;
+  width: 10px;
+  height: 10px;
+  display: block;
+  background: #9dc7d8;
+}
+.owl-carousel .active span {
+  background: #ffffff;
+}
+.sa-tabs {
+  z-index: 10;
+}
+.highlights-module.SquaredImagesLayout .owl-dots {
+  bottom: 10px;
+  right: -25%;
+  margin: 5px;
+  z-index: 55;
+}
+.highlights-module.SquaredImagesLayout .owl-dot span {
+  margin: 5px;
+  background: #9dc7d8;
+}
+.highlights-module.SquaredImagesLayout .active span {
+  background: #777676;
+}
+@media (max-width: 999px) {
+  div.k2ng-module-ImporterHighlightsModule figure picture {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.powerfull-beauty {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+.powerfull-beauty .subheader {
+  width: 75%;
+  text-align: center;
+  margin: 25px;
+}
+.video-wrapper {
+  position: relative;
+}
+.video-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.video-header .subheader {
+  text-align: center;
+  margin: 25px;
+  width: 75%;
+}
+.video-header .skoda {
+  margin-top: 20px;
+  font-size: 2.1875rem;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #4ba82e;
+  font-family: "SKODA Next", sans-serif;
+}
+.video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  position: relative;
+  height: 500px;
+}
+.video img {
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+}
+.video video {
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.video .circle {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+.video .circle:hover {
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .video .circle svg {
+    width: 33px;
+    height: 33px;
+  }
+}
+.video .circle svg {
+  width: 19px;
+  height: 19px;
+  fill: #ffffff;
+  transform: translateX(7%);
+}
+.beauty {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 5px;
+  background: #ffffff;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.beauty:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) -10px 4px 55px;
+  cursor: pointer;
+}
+.beauty .img img {
+  width: 100%;
+  height: auto;
+}
+.beauty .text {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.dbNxPI {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.kvfSPz {
+  position: relative;
+}
+.bxvtys {
+  padding-top: 56.25%;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.dsTIND {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  outline: none;
+}
+.nav-links {
+  width: 80%;
+}
+.nav-links .nav-list {
+  width: 100%;
+  text-align: right;
+}
+.dark {
+  background-color: #000000;
+}
+#main-manu {
+  display: block !important;
+  color: #28f70c;
+}
+.owl-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    padding-bottom: 0;
+    height: 100%;
+  }
+}
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    height: 420px;
+  }
+}
+.img-container {
+  height: 420px;
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterDerivativePresentationModule .sa-derivativepresentation-carousels-wrapper .sa-derivativepresentation-carousel .sa-carousel-slick-item .img-container {
+    padding-bottom: 0;
+    height: 300px;
+  }
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterHighlightsModule .highlights-module.SquaredImagesLayout .highlights-carousel .carousel-item .item-image .frame-image {
+    position: absolute;
+    width: 100%;
+    height: 350px;
+    top: 50px;
+    left: 50%;
+  }
+}
+/*==========  Desktop First Method  ==========*/
+/* Large Devices, Wide Screens */
+@media only screen and (max-width: 1366px) {
+  /**/
+  .content .time-nav .calendar {
+    padding: 5px 7px;
+    width: 160px;
+  }
+  .content .time-nav .switcher .left {
+    padding: 7px 9px 7px 10px;
+  }
+  .content .time-nav .switcher .right {
+    padding: 7px 9px 7px 10px;
+  }
+  .content .units {
+    font-size: 12px !important;
+  }
+  .content.driver-logs .cycles-info .text .text-desc {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .content.driver-logs .insert-correct .button-panel {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .content.driver-logs .insert-correct .button-panel span {
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .content.driver-logs .graph svg {
+    overflow: scroll !important;
+  }
+  .content.driver-logs .graph .chart-area {
+    max-width: 95%;
+    overflow-x: scroll;
+  }
+  .content.driver-logs .graph .logs-duration {
+    margin-left: 10px;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  /**/
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  /*Disable Animation on Mobile Devices*/
+  .animated {
+    /*CSS transitions*/
+    -o-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -webkit-transition-property: none !important;
+    transition-property: none !important;
+    /*CSS transforms*/
+    -o-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    /*CSS animations*/
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  /**/
+}
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  /**/
+}
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+  /**/
+}
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+  /**/
+}
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+  /**/
+}
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+  /**/
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+  /**/
+}
