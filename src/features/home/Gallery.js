@@ -3,6 +3,7 @@ import { css, StyleSheet } from 'aphrodite/no-important';
 import Lightbox from 'react-images-texts-videos';
 import ReactImageVideoLightbox from 'react-image-video-lightbox'
 import Images from './Images';
+import { basename } from '../../common/config';
 
 
 const Gallery = () => {
@@ -15,39 +16,39 @@ const Gallery = () => {
 
     const imgs = [
         {
-            url: '/img/gallery/gallery1.mp4', type: 'video', altTag: 'placeholder video',
-            src: "/img/gallery/gallery1.jpg",
-            thumbnail: "/img/gallery/gallery1.jpg",
+            url: `${basename}/img/gallery/gallery1.mp4`, type: 'video', altTag: 'placeholder video',
+            src: `${basename}/img/gallery/gallery1.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery1.jpg`,
             srcset: []
         },
         {
-            url: '/img/gallery/gallery2.jpg', type: 'photo', altTag: 'placeholder image',
-            src: "/img/gallery/gallery2.jpg",
-            thumbnail: "/img/gallery/gallery2.jpg",
+            url: `${basename}/img/gallery/gallery2.jpg`, type: 'photo', altTag: 'placeholder image',
+            src: `${basename}/img/gallery/gallery2.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery2.jpg`,
             srcset: []
         },
         {
-            url: '/img/gallery/gallery3.jpg', type: 'photo', altTag: 'placeholder image',
-            src: "/img/gallery/gallery3.jpg",
-            thumbnail: "/img/gallery/gallery3.jpg",
+            url: `${basename}/img/gallery/gallery3.jpg`, type: 'photo', altTag: 'placeholder image',
+            src: `${basename}/img/gallery/gallery3.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery3.jpg`,
             srcset: []
         },
         {
-            url: '/img/gallery/gallery4.jpg', type: 'photo', altTag: 'placeholder image',
-            src: "/img/gallery/gallery4.jpg",
-            thumbnail: "/img/gallery/gallery4.jpg",
+            url: `${basename}/img/gallery/gallery4.jpg`, type: 'photo', altTag: 'placeholder image',
+            src: `${basename}/img/gallery/gallery4.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery4.jpg`,
             srcset: []
         },
         {
-            url: '/img/gallery/gallery5.jpg', type: 'photo', altTag: 'placeholder image',
-            src: "/img/gallery/gallery5.jpg",
-            thumbnail: "/img/gallery/gallery5.jpg",
+            url: `${basename}/img/gallery/gallery5.jpg`, type: 'photo', altTag: 'placeholder image',
+            src: `${basename}/img/gallery/gallery5.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery5.jpg`,
             srcset: []
         },
         {
-            url: '/img/gallery/gallery6.mp4', type: 'video', altTag: 'placeholder video',
-            src: "/img/gallery/gallery6.jpg",
-            thumbnail: "/img/gallery/gallery6.jpg",
+            url: `${basename}/img/gallery/gallery6.mp4`, type: 'video', altTag: 'placeholder video',
+            src: `${basename}/img/gallery/gallery6.jpg`,
+            thumbnail: `${basename}/img/gallery/gallery6.jpg`,
             srcset: []
         },
     ]

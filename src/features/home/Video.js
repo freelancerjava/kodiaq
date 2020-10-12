@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { basename } from '../../common/config'
 
 export const Video = () => {
     const [video, setvideo] = useState(false)
@@ -16,7 +17,7 @@ export const Video = () => {
 
                 {(!video) ?
                     <>
-                        <img src="/img/video_prev.jpg" />
+                        <img src={`${basename}/img/video_prev.jpg`} />
                         <div class="circle" onClick={() => setvideo(true)}>
                             <svg viewBox="0 0 500 500" class="sc-bwzfXH uTxCW">
                                 <path d="M422.767 250L77.233 456.86V43.14L422.767 250z" stroke="null">

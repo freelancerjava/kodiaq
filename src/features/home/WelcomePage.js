@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { data, data2 } from './data';
 import Features from './Features';
 import Gallery from './Gallery';
 
@@ -14,8 +15,6 @@ import TechnologySection from './TechnologySection';
 import TestDrive from './TestDrive';
 import Top from './Top';
 import { Video } from './Video';
-const data = require("./data.json")
-const data2 = require("./data2.json")
 
 export default function WelcomePage() {
   const galleryRef = useRef(null)
