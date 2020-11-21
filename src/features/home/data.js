@@ -20,20 +20,11 @@ export const data = [
     ],
     [
         {
-            "bg_url": `${basename}/img/int1.jpg`
+            "bg_url": `${basename}/img/car.jpg`
         },
         {
-            "bg_url": `${basename}/img/int2.jpg`
+            "bg_url": `${basename}/img/carrr.jpg`
         },
-        {
-            "bg_url": `${basename}/img/int3.jpg`
-        },
-        {
-            "bg_url": `${basename}/img/int4.jpg`
-        },
-        {
-            "bg_url": `${basename}/img/int5.jpg`
-        }
     ]
 ]
 

@@ -1,1 +1,1 @@
-export const basename = '/kodiaq'
+export const basename = ''

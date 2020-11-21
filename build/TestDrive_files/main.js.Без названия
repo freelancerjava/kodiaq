@@ -1,0 +1,139 @@
+(function ($) {
+    /**
+     * Набор методов для работы с картой
+     */
+    var _dealersMap = {
+        el: {},
+        init: function (data, el) {
+            if (typeof el === 'object' && el.length > 0)
+                this.el = el;
+            else
+                return false;
+
+            var _self = this;
+            var myMap; //Объект карты
+            var geoObjDlrs = {}; //Объект точки - дилеры на карте
+            var clusterer; //кластер (все точки на карте)
+            var Dealers = data;
+            var zoom = 9;
+
+            //Инстанс карты
+            ymaps.ready(function () {
+                //Создаем карту
+                myMap = window.map = new ymaps.Map(_self.el[0].id, {
+                    center: [55.751574, 37.573856],
+                    zoom: zoom,
+                    controls: []
+                });
+
+                myMap.controls.add('zoomControl').add('typeSelector');
+
+                //Создаем шаблон для отображения количества элементов в кластере
+                var MyIconContentLayout = ymaps.templateLayoutFactory.createClass('<div style="color: #FFFFFF; position:absolute; width:34px; top:21px; font-size:10px; text-align:center;">$[properties.geoObjects.length]</div>');
+
+                //Инстанс кластера
+                clusterer = new ymaps.Clusterer({
+                    gridSize: 100,
+                    clusterDisableClickZoom: false,
+                    clusterIconContentLayout: MyIconContentLayout,
+                    clusterIcons: [{
+                        href: '/local/templates/skoda_dws/img/map-marker-x2.png',
+                        size: [34, 50],
+                        offset: [-17, -25]
+                    }]
+                });
+
+                var geoQuery = new Array();
+                //Перебираем объект с дилерами и наполняем кластер точками
+                for (var i in Dealers) {
+                    var mark = '';
+                    clusterer.add(mark = new ymaps.Placemark(
+                        [Dealers[i].LAT, Dealers[i].LNG],
+                        {
+                            balloonContentBody: '<strong>' + Dealers[i].NAME + '</strong><br /><span>' + Dealers[i].ADDRESS + '</span><br /><input data-dlr-id="' + Dealers[i].XML_ID + '" type="button" class="btn confirm" value="Подтвердить выбор">'
+                        },
+                        {
+                            iconLayout: 'default#image',
+                            iconImageHref: '/local/templates/skoda_dws/img/map-marker-x2.png',
+                            iconImageSize: [23, 33],
+                            iconImageOffset: [-15, 0],
+                            hideIconOnBalloonOpen: false,
+                            id: i
+                        }
+                    ));
+
+                    //Сохраняем все точки в объект
+                    geoObjDlrs[i] = mark;
+
+                    geoQuery.push({
+                        type: 'Feature',
+                        properties: {
+                            id: Dealers[i].XML_ID
+                        },
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [Dealers[i].LAT, Dealers[i].LNG],
+                        }
+                    });
+                }
+                //Добавляем кластер на карту
+                myMap.geoObjects.add(clusterer);
+
+                //Вешаем событие на карту открытие/закрытие балуна
+                myMap.geoObjects.events.add(['balloonopen', 'balloonclose'], function (e) {
+                    var target = e.get('target');
+                    //Заменяем значок метки после клика, при этому исключаем метку не являющуюся меткой ДЦ (имеет id=myPoint)
+                    if (target.geometry && typeof target.getGeoObjects && target.options._options.id !== 'myPoint') {
+                        if (e.get('type') === 'balloonopen') {
+                            target.options.set('iconImageHref', '/local/templates/skoda_dws/img/map-marker-x2.png');
+                        } else {
+                            target.options.set('iconImageHref', '/local/templates/skoda_dws/img/map-marker-x2.png');
+                        }
+                    }
+                });
+            });
+
+            /**
+             * Изменяем центр карты при изменении города
+             * data = {cityName: 'cityName'}
+             */
+            $(document).on('mapChangeCity', el, function (e, data) {
+                if (typeof data === 'object' && typeof data.cityName !== 'undefined') {
+                    var myGeocoder = ymaps.geocode(data.cityName);
+
+                    myGeocoder.then(
+                        function (res) {
+                            if (res.geoObjects.getLength()) {
+                                // point - первый элемент коллекции найденных объектов
+                                var point = res.geoObjects.get(0);
+
+                                // Центрирование карты на добавленном объекте
+                                myMap.setCenter(point.geometry.getCoordinates(), zoom, {
+                                    checkZoomRange: true
+                                });
+                            }
+                        },
+                        // Обработка ошибки
+                        function (error) {
+                            alert("Возникла ошибка: " + error.message);
+                        }
+                    );
+                }
+            });
+
+            $(document).on('click', '.confirm', function () {
+                // запускаем событие с ID выранного дилера, его мы потом будем слушать снаружи
+                $('body').trigger('ymapDealerChoose', $(this).data('dlr-id'));
+                $.fancybox.close();
+            });
+        }
+    };
+
+    /**
+     * Расширение для jQuery
+     */
+    $.fn.dealersMapInit = function (data) {
+        _dealersMap.init(data, this);
+        return this;
+    };
+}(jQuery));

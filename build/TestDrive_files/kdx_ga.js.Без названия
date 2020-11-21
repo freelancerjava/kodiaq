@@ -1,0 +1,1088 @@
+/**
+ * Created by kodix on 30.08.2017.
+ */
+
+//Этот скрипт поместить в GTM или в head на странице, он даст нужные функции
+/*
+
+<script>
+var apiUrl = 'https://webgate.skoda-avto.ru/api/ga/kdx_ga.js';
+var head = document.getElementsByTagName("head")[0] || document.documentElement;
+var objScript = document.createElement('script');
+objScript.type = 'text/javascript';
+objScript.src = apiUrl;
+head.insertBefore( objScript, head.firstChild );
+</script>
+
+*/
+/*
+//Этот обработчик можно добавить к скрипту выше
+objScript.onload = function(){
+    //do something
+};
+*/
+
+//Так вызываем цель GA, параметры - имя счётчика(без '.send'), если имя не задано, то пустые кавычки. Далее идут категория, тип и лейбл(коммент)
+//пример
+//KDXga('importer', 'Test-drive', 'succsess', 'octavia-rs');
+
+//Если нужно кинуть событие без отсылки в какой-л бекенд! (например iteraction там какой, или время присутствия на странице, или не идущее в отчёт событие)
+//пример
+//KDXsimpleGA('importer', 'Test-drive', 'submit', 'octavia-rs');
+
+//Если события пинаем изнутри фрейма, и во фрейме отключён счётчик, то так:
+//KDXpushOutside('KDXga', 'importer', 'Test-drive', 'submit', 'octavia-rs')
+
+//Аккуратно с кодом ниже, после любого изменения тестить! Вся аналитика SKODA работает через этот файл, если всё отвалится, будет больно!!!
+//Настроечки
+var RootHosts = ['www.skoda-avto.ru', 'new.skoda-avto.ru', '62-test-gtm-safari-kodix-skoda-brandsite.kodix.vwgroup.dev'];
+var parsedReferrer = self === top ? null : document.referrer.match(/^(https?\:)\/\/(([^:\/?#]*)(?:\:([0-9]+))?)([\/]{0,1}[^?#]*)(\?[^#]*|)(#.*|)$/);
+var RootHost = parsedReferrer ? parsedReferrer[3] : document.location.hostname;
+var RootHostCookie = RootHosts.indexOf(RootHost) > -1 ? '.' + RootHost : '';
+var RootHostProtocol = parsedReferrer ? parsedReferrer[1] : document.location.protocol;
+var SlaveHosts = [
+        {
+            'host':'webgate.skoda-avto.ru',
+            'protocol':'https'
+        },
+        {
+            'host':'service-calculator.skoda-avto.ru',
+            'protocol':'https'
+        },
+        {
+            'host':'service-entry.skoda-avto.ru',
+            'protocol':'http'
+        },
+        {
+            'host':'service-brc.skoda-avto.ru',
+            'protocol':'http'
+        },
+        {
+            'host':'tech.skoda-avto.ru',
+            'protocol':'http'
+        }
+    ];
+var BackendEventsCollectorHost = 'https://webgate.skoda-avto.ru/api/ga/'; // можно указать '' чтобы отключить сбор событий на backend
+var SlaveHost = 'webgate.skoda-avto.ru'; //Указываем один из дочерних, можно оставить пустым, объявление этой переменной обязательно!
+var SlaveHostProtocol = 'https'; //Указываем один из дочерних, можно оставить пустым, объявление этой переменной обязательно!
+var UTMCookieLifeTime = 16000000;
+var PendedCommandsCallbackInCookieLifeTime = 2;
+var CommandCookieLifeTime = 60;
+
+if(typeof(KDXHiddenGetRequest) !== 'function') {
+    function KDXHiddenGetRequest(request, mode, variable, info) {
+        if(BackendEventsCollectorHost.length > 0) {
+            var apiUrl = BackendEventsCollectorHost;
+            var head = document.getElementsByTagName("head")[0] || document.documentElement;
+            var objScript = document.createElement('script');
+            objScript.type = 'text/javascript';
+            objScript.src = apiUrl + "ga_interface.php?m=" + mode + "&r=" + request + "&v=kdx_analytics_" + variable + "&l=" + info;
+            head.insertBefore(objScript, head.firstChild);
+            //после исполнения переменной window[kdx_analytics_" + variable + "] будет присвоен id записи на backend
+        }
+    }
+}
+if(typeof(KDXga) !== 'function') {
+    function KDXga(counterprefix, cathegory, type, label) {
+        var divider = '%2B';
+        var rq = counterprefix + divider + cathegory + divider + type + divider + label;
+        var returnedvariable = counterprefix + '_' + cathegory + '_' + type + '_' + label;
+        var countername = 'send';
+        if (typeof(counterprefix) !== 'undefined' && counterprefix != '') {
+            countername = counterprefix + '.' + 'send';
+        }
+        var log =  location.href + ' ### ' + document.referrer + '###' + navigator.userAgent;
+        log = encodeURIComponent(log);
+        if (typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true) {
+            rq += divider + '1';
+            rq += divider + ga.getAll()[0].get('clientId');
+            if(typeof(ga.getAll()[0]) !== 'undefined') log += divider + ga.getAll()[0].get('name');
+            if(typeof(ga.getAll()[1]) !== 'undefined') log += divider + ga.getAll()[1].get('name');
+            if(typeof(ga.getAll()[2]) !== 'undefined') log += divider + ga.getAll()[2].get('name');
+
+            KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+            //console.log(countername);
+            /*ga(countername, 'event', {
+                'eventCategory': cathegory,
+                'eventAction': type,
+                'eventLabel': label,
+                'eventValue': 1,
+                'hitCallback': function () {
+                    //console.log('okay! '+'kdx_analytics_' + returnedvariable);
+                    setTimeout(function () {
+                        if (typeof(window['kdx_analytics_' + returnedvariable]) != 'undefined') {
+                            KDXHiddenGetRequest(window['kdx_analytics_' + returnedvariable], 'UPD_OK', returnedvariable + '_UPD','');
+                        }
+                    }, 500);
+                },
+                'hitCallbackFail': function () {
+                    setTimeout(function () {
+                        if (typeof(window['kdx_analytics_' + returnedvariable]) != 'undefined') {
+                            KDXHiddenGetRequest(window['kdx_analytics_' + returnedvariable], 'UPD_FAIL', returnedvariable + '_UPD','');
+                        }
+                    }, 500);
+                }
+            }); */
+            if (counterprefix!='test'){
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event' : 'send_ga',
+                    'eventCategory':cathegory,
+                    'eventAction':type,
+                    'eventLabel':label,
+                    'counterName':countername,
+                    });
+                console.log('ga ' + countername + '_' + cathegory + '_' + type + '_' + label);
+            }
+        } else {
+            rq += divider + '0';
+            KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+            console.log('ga FAILED_' + countername + '_' + cathegory + '_' + type + '_' + label);
+            //А всё равно пытаемся отправить!
+            //ga(countername, 'event', cathegory, type, label);
+        }
+    }
+}
+
+if(typeof(KDXsimpleGA) !== 'function') {
+    function KDXsimpleGA(counterprefix, cathegory, type, label) {
+        var countername = 'send';
+        if (typeof(counterprefix) !== 'undefined' && counterprefix != '') {
+            countername = counterprefix + '.' + 'send';
+        }
+        if (typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true) {
+            /* ga(countername, 'event', {
+                'eventCategory': cathegory,
+                'eventAction': type,
+                'eventLabel': label,
+                'eventValue': 1,
+                'hitCallback': function () {
+                    //console.log('okay! '+'kdx_analytics_' + returnedvariable);
+                },
+                'hitCallbackFail': function () {
+                }
+            }); */
+
+            if (counterprefix!='test'){
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event' : 'send_ga',
+                    'eventCategory':cathegory,
+                    'eventAction':type,
+                    'eventLabel':label,
+                    'counterName':countername,
+                    });
+                console.log('ga ' + countername + '_' + cathegory + '_' + type + '_' + label);
+            }
+        } else {
+            console.log('ga simple FAILED_' + countername + '_' + cathegory + '_' + type + '_' + label);
+            //А всё равно пытаемся отправить!
+            //ga(countername, 'event', cathegory, type, label);
+        }
+    }
+}
+
+if(typeof(KDXpushFloodlight) !== 'function') {
+    function KDXpushFloodlight(domain, label) {
+
+        var divider = '%2B';
+        var rq = 'importer' + divider + 'FLOODLIGHT_TAG' + divider + domain + divider + label;
+        var returnedvariable = 'importer' + '_' + 'FLOODLIGHT_TAG' + '_' + domain + '_' + label;
+        var log =  location.href + ' ### ' + document.referrer + '###' + navigator.userAgent;
+        log = encodeURIComponent(log);
+
+        if (typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true) {
+            var basicId = 'KDX_floodlight_tag_dynamic_container_';
+            var blocks = ['1','2','3','4','5','6','7','8','9','10'];
+            var target_block = null;
+            var created_block = false;
+
+            //10 слотов доступно для отправки
+            blocks.forEach(function(item) {
+                if(!created_block) {
+                    var blockId = basicId + item;
+                    var test_block = document.getElementById(blockId);
+                    if (test_block === null) {
+                        var objdiv = document.createElement('div');
+                        objdiv.id = blockId;
+                        document.body.appendChild(objdiv);
+                        target_block = document.getElementById(blockId);
+                        created_block = true;
+                    }
+                }
+            });
+            var axel = Math.random() + "";
+            var a = axel * 10000000000000;
+            //var target_block = document.getElementById('KDX_floodlight_tag_dynamic_container');
+
+            if(target_block !== null) {
+                if(domain == 'ru_sk011' || domain == 'ru_sk012') {
+                    // //6237413.fls.doubleclick.net/activityi;src=6237413;type=count0;cat=ru_sk011;ord=1;num=3400137050147;gtm=2wgbc0;gcldc=CjgKEAiA2o_fBRC2oNah-feKlwQSJADekCEzuOhyd98CelAhSEZ32GL2zNbGMBD9K3QF3P88iauBlfD_BwE;auiddc=896248433.1537253779;u8=false;u9=104143;~oref=http%3A%2F%2Fwww.skoda-avto.ru%2Fwelcome-page%3Futm_source%3Do2o%26utm_medium%3Demail%26utm_campaign%3Dpurchaser%26intID%3D104143%26model%3Dsuperb?
+                    target_block.innerHTML = '<iframe src="'+window.location.protocol+'//6237413.fls.doubleclick.net/activityi;src=6237413;type=count0;cat=' + domain + ';u8=' + ga.getAll()[0].get('clientId') + ';u9=' + label + ';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1;num=' + a + ';~oref=' + encodeURIComponent(location.href) +'?" width="1" height="1" frameborder="0"></iframe>';
+                } else {
+                    // //6237413.fls.doubleclick.net/activityi;src=6237413;type=count0;cat=ru_sk00l;ord=7808897980299;gtm=2wgas3;gcldc=CjgKEAiA2o_fBRC2oNah-feKlwQSJADekCEzuOhyd98CelAhSEZ32GL2zNbGMBD9K3QF3P88iauBlfD_BwE;auiddc=896248433.1537253779;u8=false;~oref=http%3A%2F%2Fwww.skoda-avto.ru%2F?
+                    target_block.innerHTML = '<iframe src="'+window.location.protocol+'//6237413.fls.doubleclick.net/activityi;src=6237413;type=count0;cat=' + domain + ';u2=' + label + ';u8=' + ga.getAll()[0].get('clientId') + ';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1;num=' + a + '?" width="1" height="1" frameborder="0"></iframe>';
+                }
+
+
+            }
+            /*if (typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true) {*/
+
+
+            if(target_block !== null) {
+                rq += divider + '2';
+            } else {
+                rq += divider + '0';
+                log += divider + 'NOBLOCK';
+            }
+
+            rq += divider + ga.getAll()[0].get('clientId');
+
+            if(typeof(ga.getAll()[0]) !== 'undefined') log += divider + ga.getAll()[0].get('name');
+            if(typeof(ga.getAll()[1]) !== 'undefined') log += divider + ga.getAll()[1].get('name');
+            if(typeof(ga.getAll()[2]) !== 'undefined') log += divider + ga.getAll()[2].get('name');
+            /*} else {
+                rq += divider + '0';
+            }*/
+
+
+
+            if(domain == 'ru_sk011' || domain == 'ru_sk012') {
+                KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+            }
+
+            //console.log('Floodlight push ' + ga.getAll()[0].get('clientId') + '_' + domain + '_' + label);
+        } else {
+            log += divider + 'NOGA';
+            if(domain == 'ru_sk011' || domain == 'ru_sk012') {
+                KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+            }
+        }
+    }
+}
+
+if(typeof(KDXLogFailure) !== 'function') {
+    function KDXLogFailure(counterprefix, cathegory, type, label) {
+        counterprefix = 'fail_' + counterprefix;
+        var divider = '%2B';
+        var rq = counterprefix + divider + cathegory + divider + type + divider + label;
+        var returnedvariable = counterprefix + '_' + cathegory + '_' + type + '_' + label;
+        var log =  location.href + ' ### ' + document.referrer + '###' + navigator.userAgent;
+        log = encodeURIComponent(log);
+        if (typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true) {
+            rq += divider + '1';
+            rq += divider + ga.getAll()[0].get('clientId');
+            if(typeof(ga.getAll()[0]) !== 'undefined') log += divider + ga.getAll()[0].get('name');
+            if(typeof(ga.getAll()[1]) !== 'undefined') log += divider + ga.getAll()[1].get('name');
+            if(typeof(ga.getAll()[2]) !== 'undefined') log += divider + ga.getAll()[2].get('name');
+            KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+        } else {
+            rq += divider + '0';
+            KDXHiddenGetRequest(rq, 'ADD', returnedvariable,log);
+        }
+    }
+}
+
+//Хелпер для сохранения cookie
+//usage KDXsetCookie('name','value',{'expires':60,'path':'/','domain':RootHostCookie});
+if(typeof(KDXsetCookie) !== 'function') {
+    function KDXsetCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        var updatedCookie = name + "=" + value;
+
+        for (var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
+    }
+}
+
+//Хелпер для получения cookie
+if(typeof(KDXgetCookie) !== 'function') {
+    function KDXgetCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+}
+
+/**/
+if((location.host === RootHost) && self == top) {
+    //if(window.location.search.substring(1).indexOf('GHOSTGA') + 1) {
+        function gotString(event) {
+            var originInSlaveHosts = false;
+            var evtSlaveHost = SlaveHost;
+            var evtSlaveHostProtocol = SlaveHostProtocol;
+
+            SlaveHosts.forEach(function(item, i, arr) {
+                if('http://'+item.host == event.origin || 'https://'+item.host == event.origin) {
+                    originInSlaveHosts = true;
+                    evtSlaveHost = item.host;
+                    evtSlaveHostProtocol = item.protocol;
+                }
+            });
+
+            if (!originInSlaveHosts) {
+                // что-то прислали с неизвестного домена - проигнорируем..
+                return;
+            }
+            //console.log(event.data);
+            if(event.data.indexOf('command') > -1 && event.data.indexOf('return') > -1){
+                var inputs = JSON.parse(event.data);
+                //console.log(inputs);
+                if(inputs.command === 'KDXga' && typeof(KDXga) !== 'undefined') {
+                    KDXga(inputs.counterprefix, inputs.cathegory, inputs.type, inputs.label/*+'ok'*/);
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, evtSlaveHostProtocol+'://'+evtSlaveHost);
+                    },100);
+                }
+                if(inputs.command === 'KDXsimpleGA' && typeof(KDXsimpleGA) !== 'undefined') {
+                    KDXsimpleGA(inputs.counterprefix, inputs.cathegory, inputs.type, inputs.label/*+'ok'*/);
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, evtSlaveHostProtocol+'://'+evtSlaveHost);
+                    },100);
+                }
+                if(inputs.command === 'KDXmetrics' && typeof(yaCounter26885850) !== 'undefined') {
+                    yaCounter26885850.reachGoal(inputs.cathegory);
+                    console.log('YA_METRICS_'+inputs.cathegory);
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, evtSlaveHostProtocol+'://'+evtSlaveHost);
+                    },100);
+                }
+                if(inputs.command === 'Adspend' && typeof(ADSPEND) !== 'undefined') {
+                    ADSPEND.onReady('retargeting', inputs.counterprefix, inputs.cathegory);
+                    console.log('ADSPEND_'+inputs.counterprefix+'_'+inputs.cathegory);
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, evtSlaveHostProtocol+'://'+evtSlaveHost);
+                    },100);
+                }
+                if(inputs.command === 'KDXpushFloodlight' && typeof(KDXpushFloodlight) !== 'undefined') {
+                    KDXpushFloodlight(inputs.counterprefix, inputs.cathegory);
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, evtSlaveHostProtocol+'://'+evtSlaveHost);
+                    },100);
+                }
+                if(inputs.command === 'SetHeight') {
+                    var SlaveIframes_ = document.querySelectorAll('iframe[src*="'+evtSlaveHost+'"]');
+                    if (SlaveIframes_.length) {
+                        SlaveIframes_[0].height = inputs.counterprefix+'px';
+                    }
+                    KDXsetCookie(inputs.return, 'pended', {
+                        'expires': PendedCommandsCallbackInCookieLifeTime,
+                        'path': '/',
+                        'domain': RootHostCookie
+                    });
+                    //event.source.height = /*inputs.counterprefix+*/'200px';
+                    /*KDXga(inputs.counterprefix, inputs.cathegory, inputs.type, inputs.label/*+'ok'*//*);
+                    setTimeout(function(){
+                        event.source.postMessage(inputs.return, 'https://'+SlaveHost);
+                    },100);
+                    */
+                }
+            }
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener("message", gotString);
+        } else {
+            // IE8
+            window.attachEvent("onmessage", gotString);
+        }
+    //}
+
+    //Ловим куку, если прилетает
+    //if(window.location.search.substring(1).indexOf('GHOSTGA') + 1) {
+        window.KDX_COOKIE_EVT_MANAGER_INTERVAL = setInterval(function () {
+            if(typeof(KDXgetCookie) === 'function') {
+                if(KDXgetCookie('KDX_COOKIE_EVT') != undefined && KDXgetCookie('KDX_COOKIE_EVT') !== 'nop') {
+                    var dataKDXCookie = KDXgetCookie('KDX_COOKIE_EVT');
+                    if(dataKDXCookie.indexOf('command') > -1 && dataKDXCookie.indexOf('return') > -1){
+                        var inputs = JSON.parse(dataKDXCookie);
+
+                        if(inputs.command === 'KDXga' && typeof(KDXga) !== 'undefined') {
+                            if(KDXgetCookie(inputs.return) !== 'pended') {
+                                KDXga(inputs.counterprefix, inputs.cathegory, inputs.type, inputs.label/*+'ok'*/);
+                                KDXsetCookie(inputs.return, 'pended', {
+                                    'expires': PendedCommandsCallbackInCookieLifeTime,
+                                    'path': '/',
+                                    'domain': RootHostCookie
+                                });
+                            }
+                        }
+                        if(inputs.command === 'KDXsimpleGA' && typeof(KDXsimpleGA) !== 'undefined') {
+                            if(KDXgetCookie(inputs.return) !== 'pended') {
+                                KDXsimpleGA(inputs.counterprefix, inputs.cathegory, inputs.type, inputs.label/*+'ok'*/);
+                                KDXsetCookie(inputs.return, 'pended', {
+                                    'expires': PendedCommandsCallbackInCookieLifeTime,
+                                    'path': '/',
+                                    'domain': RootHostCookie
+                                });
+                            }
+                        }
+                        if(inputs.command === 'KDXmetrics' && typeof(yaCounter26885850) !== 'undefined') {
+                            yaCounter26885850.reachGoal(inputs.cathegory);
+                            console.log('YA_METRICS_'+inputs.cathegory);
+                            KDXsetCookie(inputs.return, 'pended', {
+                                'expires': PendedCommandsCallbackInCookieLifeTime,
+                                'path': '/',
+                                'domain': RootHostCookie
+                            });
+                        }
+                        if(inputs.command === 'Adspend' && typeof(ADSPEND) !== 'undefined') {
+                            ADSPEND.onReady('retargeting', inputs.counterprefix, inputs.cathegory);
+                            console.log('ADSPEND_'+inputs.counterprefix+'_'+inputs.cathegory);
+                            KDXsetCookie(inputs.return, 'pended', {
+                                'expires': PendedCommandsCallbackInCookieLifeTime,
+                                'path': '/',
+                                'domain': RootHostCookie
+                            });
+                        }
+                        if(inputs.command === 'KDXpushFloodlight' && typeof(KDXpushFloodlight) !== 'undefined') {
+                            KDXpushFloodlight(inputs.counterprefix, inputs.cathegory);
+                            KDXsetCookie(inputs.return, 'pended', {
+                                'expires': PendedCommandsCallbackInCookieLifeTime,
+                                'path': '/',
+                                'domain': RootHostCookie
+                            });
+                        }
+                        if(inputs.command === 'SetHeight') {
+                            if(KDXgetCookie(inputs.return) !== 'pended') {
+                                var SlaveIframes_ = document.querySelectorAll('iframe[src*="' + SlaveHost + '"]');
+                                if (SlaveIframes_.length) {
+                                    SlaveIframes_[0].height = inputs.counterprefix + 'px';
+                                }
+                                KDXsetCookie(inputs.return, 'pended', {
+                                    'expires': PendedCommandsCallbackInCookieLifeTime,
+                                    'path': '/',
+                                    'domain': RootHostCookie
+                                });
+                            }
+                        }
+                        //Стираем куку команды
+                        KDXsetCookie('KDX_COOKIE_EVT','nop',{'expires':-1,'path':'/','domain':RootHostCookie});
+                    }
+                }
+            } else {
+                //clearInterval(window.KDX_COOKIE_EVT_MANAGER_INTERVAL);
+            }
+        }, 100); //Надеюсь 100мс достаточно и накладки друг на друга не будет, код успеет выполнится, будут проблемы - добавить семафор
+        /*
+        var objdiv = document.createElement('div');
+        objdiv.id = 'KDX_floodlight_tag_dynamic_container';
+        document.body.appendChild(objdiv);
+        */
+    //}
+}
+
+//Если скрипт загружается на одном из дочерних, то определяем на каком, чтобы работали коллбеки
+SlaveHosts.forEach(function(item, i, arr) {
+    if(item.host == location.host) {
+        SlaveHost = item.host;
+        SlaveHostProtocol = item.protocol;
+    }
+});
+
+window.KDXpushCookieOutside = null;
+window.KDXpushOutside = undefined;
+
+if((location.host === SlaveHost) && typeof(window.KDXpushOutside) !== 'function' && self != top) {
+    window.KDXpushOutside = function (command, counterprefix, cathegory, type, label) {
+        var stateIdTmp = command + '_' + counterprefix + '_' + cathegory + '_' + type + '_' + label;
+        var msg = {
+            'return': stateIdTmp,
+            'command':command,
+            'counterprefix':counterprefix,
+            'cathegory':cathegory,
+            'type':type,
+            'label':label
+        };
+
+        window.parent.postMessage(JSON.stringify(msg), RootHostProtocol + '//'+RootHost);
+
+        setTimeout(function () {
+            if (!KDXcheckState(stateIdTmp) && typeof(window.KDXpushCookieOutside) !== 'undefined') {
+
+                //Пушим через куку, работает только если поддомен
+                window.KDXpushCookieOutside(command, counterprefix, cathegory, type, label);
+                setTimeout(function () {
+                    if (!KDXcheckState(stateIdTmp)) {
+                        if(type == 'success') {
+                            KDXLogFailure(counterprefix, cathegory, type, label);
+                        }
+                        //KDXga(counterprefix, cathegory, type, label + 'unreached');
+                        //console.log('Unreached');
+                    }
+                }, 500);
+
+
+                //KDXga(counterprefix, cathegory, type, label + 'unreached');
+
+
+
+                //console.log('First attempt unreached');
+            } else {/*console.log('shakehand');*/}
+        }, 500);
+    }
+
+    window.KDXpushCookieOutside = function(command, counterprefix, cathegory, type, label) {
+        var stateIdTmp = command + '_' + counterprefix + '_' + cathegory + '_' + type + '_' + label;
+        var msg = {
+            'return': stateIdTmp,
+            'command':command,
+            'counterprefix':counterprefix,
+            'cathegory':cathegory,
+            'type':type,
+            'label':label
+        };
+
+        if(typeof(KDXsetCookie) === 'function') {
+            if(KDXgetCookie('KDX_COOKIE_EVT') != undefined && KDXgetCookie('KDX_COOKIE_EVT') !== 'nop' && KDXgetCookie('KDX_COOKIE_EVT').indexOf('command') > -1) {
+                console.log('Command query busy, wait...');
+
+                window['cookie_interval_'+stateIdTmp] = setInterval(function () {
+                    if(KDXgetCookie('KDX_COOKIE_EVT') != undefined && KDXgetCookie('KDX_COOKIE_EVT') !== 'nop' && KDXgetCookie('KDX_COOKIE_EVT').indexOf('command') > -1) {
+                        console.log('Command query still busy, wait...');
+                    } else {
+                        KDXsetCookie('KDX_COOKIE_EVT', JSON.stringify(msg), {
+                            'expires': CommandCookieLifeTime,
+                            'path': '/',
+                            'domain': RootHostCookie
+                        });
+                        clearInterval(window['cookie_interval_'+stateIdTmp]);
+                    }
+                }, 100);
+
+            } else {
+                KDXsetCookie('KDX_COOKIE_EVT', JSON.stringify(msg), {
+                    'expires': CommandCookieLifeTime,
+                    'path': '/',
+                    'domain': RootHostCookie
+                });
+            }
+        }
+    }
+
+    if(typeof(KDXcheckState) !== 'function') {
+        function KDXcheckState(stateId) {
+            if(typeof(window[stateId]) == 'undefined') {
+
+                if(typeof(KDXgetCookie) === 'function') {
+                    if(KDXgetCookie(stateId) == 'pended') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+    }
+
+    if(typeof(KDXgotResponseFromOutside) !== 'function') {
+        function KDXgotResponseFromOutside(event) {
+            if (event.origin != 'https://'+RootHost && event.origin != 'http://'+RootHost) {
+                // что-то прислали с неизвестного домена - проигнорируем..
+                return;
+            }
+
+            window[event.data] = 1;
+            //console.log(event.data + ' #Slave');
+            //console.log(event);
+        }
+    }
+
+    if (window.addEventListener) {
+        window.addEventListener("message", KDXgotResponseFromOutside);
+    } else {
+        // IE8
+        window.attachEvent("onmessage", KDXgotResponseFromOutside);
+    }
+
+}
+/**/
+
+/*
+//Для материнского домена делаем отправку во фреймы UTM меток
+//Перенесено в utm_iframe_brige.js
+//Потому что тот файл подключён прямо в код страницы, приоритет выполнения выше
+
+if((location.host == 'www.skoda-avto.ru' || location.host == 'salesoutskoda.ru')) { //Отрубаем - тестить!
+    if(window.location.search.substring(1).indexOf('utm_campaign') + 1) {
+        var KDXGetParamParser = function () {
+            // This function is anonymous, is executed immediately and
+            // the return value is assigned to QueryString!
+            var query_string = {};
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                var pair = vars[i].split("=");
+                // If first entry with this name
+                if (typeof query_string[pair[0]] === "undefined") {
+                    query_string[pair[0]] = decodeURIComponent(pair[1]);
+                    // If second entry with this name
+                } else if (typeof query_string[pair[0]] === "string") {
+                    var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+                    query_string[pair[0]] = arr;
+                    // If third or later entry with this name
+                } else {
+                    query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                }
+            }
+            return query_string;
+        }();
+
+        KDXGetParamParser['initiator'] = 'UTM_STUFF_SKODA_AVTO';
+        var UTM_STUFF = JSON.stringify(KDXGetParamParser);
+
+        window.UTM_MANAGER_INTERVAL_CHECK_COUNT = 0;
+        window.UTM_MANAGER_INTERVAL = setInterval(function () {
+            SlaveIframes = document.querySelectorAll('iframe[src*="webgate.skoda-avto.ru"]');
+            if(SlaveIframes.length > 0) {
+                Object.keys(SlaveIframes).forEach(function(key) {
+                    if(SlaveIframes[key].src.indexOf('https') + 1) {
+                        SlaveIframes[key].contentWindow.postMessage(UTM_STUFF, 'https://webgate.skoda-avto.ru');
+                    } else {
+                        SlaveIframes[key].contentWindow.postMessage(UTM_STUFF, 'http://webgate.skoda-avto.ru');
+                    }
+                });
+            }
+
+            window.UTM_MANAGER_INTERVAL_CHECK_COUNT++;
+            /*if(window.UTM_MANAGER_INTERVAL_CHECK_COUNT == 5) {
+                clearInterval(window.UTM_MANAGER_INTERVAL);
+            }*//*
+        }, 500);
+    }
+}
+*/
+
+//Везде, где бы мы ни были, ищем куку с ЮТМ метками
+//И вебгейт и основной сайт получат куку
+
+
+
+window.KDX_COOKIE_UTM_MANAGER_INTERVAL = setInterval(function () {
+    if(typeof(KDXgetCookie) === 'function') {
+        if(typeof(window.UTM_STUFF) === 'undefined' && typeof(KDXgetCookie('UTM_STUFF')) === 'string' && KDXgetCookie('UTM_STUFF').indexOf('utm_campaign') > -1) {
+            window.UTM_STUFF = KDXgetCookie('UTM_STUFF');
+            //console.log('UTM restored from cookie - all frames');
+            clearInterval(window.KDX_COOKIE_UTM_MANAGER_INTERVAL);
+        }
+    } else {
+        //clearInterval(window.KDX_COOKIE_UTM_MANAGER_INTERVAL);
+    }
+}, 500);
+
+//На вебгейте принимаем и пихаем скрытый input во все формы
+//ToDo - переделать, если форма на странице не сразу, а генерится!
+//ToDo - добавить коллбек, чтобы бесконечно postmessage не дёргать
+if(location.host == 'webgate.skoda-avto.ru') {
+    function listenerUTM(event) {
+        if (event.origin != 'http://www.skoda-avto.ru' && event.origin != 'https://www.skoda-avto.ru') {
+            // что-то прислали с неизвестного домена - проигнорируем..
+            return;
+        }
+        if(/*typeof(window.UTM_STUFF) === 'undefined' && */event.data.indexOf('utm_campaign') > -1) {
+            window.UTM_STUFF = event.data.replace(/\"/g,"'");
+
+            //KDXsetCookie('UTM_STUFF',window.UTM_STUFF,{'expires':604800,'path':'/'});
+            KDXsetCookie('UTM_STUFF',window.UTM_STUFF,{'expires':UTMCookieLifeTime,'path':'/','domain':RootHostCookie});
+
+            //Отключил насильную вставку скрытого инпута, формы должны сами забирать информацию из глобальной переменной
+            /*
+            var objInput = document.createElement('input');
+            objInput.name = 'utm_stuff';
+            objInput.type = 'hidden';
+            objInput.value = window.UTM_STUFF;
+
+            var forms = document.getElementsByTagName("form");
+
+            if(forms.length > 0) {
+                Object.keys(forms).forEach(function(key) {
+                    forms[key].insertBefore(objInput,forms[key].firstChild);
+                    //console.log(objInput);
+                });
+            }
+            */
+            //console.log("iframe got utm");
+            //window.parent для колбека!
+        }
+    }
+
+
+    if (window.addEventListener) {
+        window.addEventListener("message", listenerUTM);
+    } else {
+        // IE8
+        window.attachEvent("onmessage", listenerUTM);
+    }
+
+    //Если меток нет, но они были в куках, спасём их.
+    //deprecated
+    /**/
+    if(typeof(window.UTM_STUFF) === 'undefined' && typeof(KDXgetCookie('UTM_STUFF')) === 'string' && KDXgetCookie('UTM_STUFF').indexOf('utm_campaign') > -1){
+        window.UTM_STUFF = KDXgetCookie('UTM_STUFF');
+        console.log('iframe got UTM from cookie');
+    }
+    /**/
+
+}
+
+
+/*
+ if((location.host == 'www.skoda-avto.ru')) {
+ setTimeout(function(){
+ clearInterval(window.UTM_MANAGER_INTERVAL);
+ },10000);
+ }
+ */
+
+//window.onload = function(){
+    if(window.location.href.indexOf('skoda-avto.ru/welcome-page') > -1) {
+        CRM_ID = (function(){return new URL(location.href);})().searchParams.get("CRM_ID");
+        model = (function(){return new URL(location.href);})().searchParams.get("model");
+
+        if(CRM_ID !== null && model !== null) {
+            ga('importer.send', 'event', {
+                'eventCategory': 'Purchase',
+                'eventAction': 'WelcomeLetter',
+                'eventLabel': model,
+                'eventValue': CRM_ID,
+                'hitCallback': function () {
+                    //console.log('okay! '+'pageview_Floodlight_');
+                },
+                'hitCallbackFail': function () {
+                }
+            });
+        }
+
+        var KDX_TAG_GA_WHEEL_ru_sk011 = setInterval(
+            function(){
+                if(typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true){
+                    clearInterval(KDX_TAG_GA_WHEEL_ru_sk011);
+                    KDXpushFloodlight('ru_sk011',(function(){return new URL(location.href);})().searchParams.get("intID"));
+                }
+            },250);
+    }
+
+    if(window.location.href.indexOf('skoda-avto.ru/welcome-offers') > -1) {
+        var KDX_TAG_GA_WHEEL_ru_sk012 = setInterval(
+            function(){
+                if(typeof(window.ga) !== 'undefined' && ga.hasOwnProperty('loaded') && ga.loaded === true){
+                    clearInterval(KDX_TAG_GA_WHEEL_ru_sk012);
+                    KDXpushFloodlight('ru_sk012',(function(){return new URL(location.href);})().searchParams.get("intID"));
+                }
+            },250);
+    }
+//};
+
+//Считаем жмакания на слайдер
+if(window.location.href.indexOf('skoda-avto.ru/hockey-edition') > -1) {
+    window['KDX_hockey_slider_iteraction_counter'] = 1;
+    $('.kdx2he__slick.slick-slider.js_kdx2he_slick.slick-initialized>button').click(function(){
+        KDXsimpleGA('importer','Slider_Hockey_edition','click',window['KDX_hockey_slider_iteraction_counter']);
+        KDXsimpleGA('test','Slider_Hockey_edition','click',window['KDX_hockey_slider_iteraction_counter']);
+        window['KDX_hockey_slider_iteraction_counter']++;
+    });
+}
+
+//Жмак на телефон в fleet
+if(window.location.href.indexOf('skoda-avto.ru/skoda-fleet/contacts') > -1) {
+    $(document).on("click", 'a[href*="tel:88005550101"]', function (e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        KDXsimpleGA('importer','Tel_Bottom','click','');
+        KDXsimpleGA('test','Tel_Bottom','click','');
+        /*
+        dataLayer.push({
+            'event': 'JSEvent',
+            'JS_eventCategory': 'DealerMap',
+            'JS_eventAction': 'gotodealer',
+            'JS_eventLabel': href,
+            'JS_eventYandex': 'GOTODEALER'
+        });
+        */
+        window.open(href);
+    });
+}
+
+//Жмак на слайдер в fleet
+if(window.location.href.indexOf('skoda-avto.ru/skoda-fleet') > -1) {
+    $(document).on("click", '.slider__wrap', function (e) {
+        //e.preventDefault();
+
+        KDXsimpleGA('importer','Fleet_Gallery','click','');
+        KDXsimpleGA('test','Fleet_Gallery','click','');
+        /*
+         dataLayer.push({
+         'event': 'JSEvent',
+         'JS_eventCategory': 'DealerMap',
+         'JS_eventAction': 'gotodealer',
+         'JS_eventLabel': href,
+         'JS_eventYandex': 'GOTODEALER'
+         });
+         */
+
+    });
+}
+
+window.onload = function() {
+
+    if (
+        window.location.href.indexOf('skoda-avto.ru/hockey-edition') > -1 ||
+        window.location.href.indexOf('skoda-avto.ru/models/') > -1
+    ) {
+        var href = document.location.href;
+        var unparsed = href.toUpperCase();
+        var model = false;
+        if(unparsed.indexOf('RAPID') > -1) model = 'rapid-fl';
+        if(unparsed.indexOf('YETI') > -1) model = 'new-yeti';
+        if(unparsed.indexOf('SUPERB') > -1) model = 'new-superb';
+        if(unparsed.indexOf('KODIAQ') > -1) model = 'kodiaq';
+        if(unparsed.indexOf('OCTAVIA') > -1) model = 'octavia-new';
+        if(unparsed.indexOf('OCTAVIA-COMBI') > -1) model = 'octavia-combi-new';
+        if(unparsed.indexOf('SUPERB-COMBI') > -1) model = 'new-superb-combi';
+
+        if(model === false) model = 'not_set';
+
+        KDXpushFloodlight('ru_sk00m',model);
+    }
+
+    if (
+        window.location.href.indexOf('skoda-avto.ru/specials/') > -1
+    ) {
+        var href = document.location.href;
+        var unparsed = href.toUpperCase();
+        var model = false;
+        if(unparsed.indexOf('RAPID') > -1) model = 'rapid-fl';
+        if(unparsed.indexOf('YETI') > -1) model = 'new-yeti';
+        if(unparsed.indexOf('SUPERB') > -1) model = 'new-superb';
+        if(unparsed.indexOf('KODIAQ') > -1) model = 'kodiaq';
+        if(unparsed.indexOf('OCTAVIA') > -1) model = 'octavia-new';
+        if(unparsed.indexOf('OCTAVIA-COMBI') > -1) model = 'octavia-combi-new';
+        if(unparsed.indexOf('SUPERB-COMBI') > -1) model = 'new-superb-combi';
+
+        if(model === false) model = 'not_set';
+
+        KDXpushFloodlight('ru_sk00n',model);
+    }
+
+/*
+    setTimeout(function(){
+        ga('importer.send', 'pageview');
+        console.log('pageview importer file');
+    },10000);
+*/
+    if(window.location.href.indexOf('skoda-avto.ru/skoda-fleet') > -1) {
+        if (!navigator.sendBeacon) {
+            $(document).on("click", '.st-btn.st-btn_green', function (e) {
+                e.preventDefault();
+                _href = $(this).attr('href');
+                $.get('https://sys.refocus.ru/t=1415253616/?cp=34', {});
+                window.open(_href);
+                console.log('remarketing');
+            });
+        } else {
+            $(document).on("click", '.st-btn.st-btn_green', function () {
+                console.log('remarketing');
+                navigator.sendBeacon('https://sys.refocus.ru/t=1415253616/', 'cp=34');
+            });
+        }
+        $(".btn-offer").click(function() {
+            console.log('remarketing');
+            $.get('https://sys.refocus.ru/t=1415253616/?cp=34', {}, null, 'jsonp');
+        });
+        $(document).on("click", '.btn', function (e) {
+            console.log('remarketing');
+            $.get('https://sys.refocus.ru/t=1415253616/?cp=34', {}, null, 'jsonp');
+        });
+
+
+        $("#cp_button1, #cp_button2, #cp_button3, #cp_button4, #cp_button5, #cp_button6, #cp_button7, #cp_button8, #cp_button9").on('mousedown', function(e) {
+            if (e.which === 2 || e.which === 3) {
+                console.log('scroll');
+                var xhttpRefocus = new XMLHttpRequest();
+                xhttpRefocus.open("GET", "https://sys.refocus.ru/t=1415253616/?cp=34",  true);
+                xhttpRefocus.send();
+            }
+        });
+    }
+
+};
+
+
+
+if (
+    window.location.href.indexOf('skoda-avto.ru/specials/pages/skoda-range') > -1 ||
+    window.location.href.indexOf('skoda-avto.ru/mobile/specials/skoda-range') > -1 ||
+    window.location.href.indexOf('skoda-avto.ru/specials/skoda-range') > -1
+) {
+
+    $('.section.models .model-item .model-item__button a').click(function(e){
+        var model = 'not_set';
+        var href = $(this).attr('href');
+        var unparsed = href.toUpperCase();
+        if(unparsed.indexOf('RAPID') > -1) model = 'rapid-fl';
+        if(unparsed.indexOf('OCTAVIA') > -1) model = 'octavia-new';
+        if(unparsed.indexOf('KODIAQ') > -1) model = 'kodiaq';
+        ga('importer.send', 'event', 'SalesOutRangeLanding', 'click_more', model);
+    });
+
+    $('.section.info.nst-component button.btn.js-infoToggle').click(function(e){
+
+        var model = 'not_set';
+        var content = $(this).parent().siblings('h2.section-title').html();
+        var unparsed = content.toUpperCase();
+        if(unparsed.indexOf('RAPID') > -1) model = 'rapid-fl';
+        if(unparsed.indexOf('OCTAVIA') > -1) model = 'octavia-new';
+        if(unparsed.indexOf('KODIAQ') > -1) model = 'kodiaq';
+        ga('importer.send', 'event', 'SalesOutRangeLanding', 'click_show_details', model);
+    });
+
+    $('.section.info.nst-component a.btn.btn--green').click(function(e){
+        e.preventDefault();
+        _href = $(this).attr('href');
+        var model = 'not_set';
+        var content = $(this).parent().siblings('h2.section-title').html();
+        var unparsed = content.toUpperCase();
+        if(unparsed.indexOf('RAPID') > -1) model = 'rapid-fl';
+        if(unparsed.indexOf('OCTAVIA') > -1) model = 'octavia-new';
+        if(unparsed.indexOf('KODIAQ') > -1) model = 'kodiaq';
+        ga('importer.send', 'event', 'SalesOutRangeLanding', 'click_get_offer', model);
+        window.open(_href);
+    });
+
+    $('.reasons.section a.btn.btn--green').click(function(e){
+        e.preventDefault();
+        _href = $(this).attr('href');
+        var unparsed = _href.toUpperCase();
+        var action = 'click_bottom_button';
+        if(unparsed.indexOf('SKODA-AVTO.RU') > -1) action = 'click_more_bottom';
+        if(unparsed.indexOf('/FINANCE/CALC') > -1) action = 'click_calc_bottom';
+        if(unparsed.indexOf('/ABOUT/INDIVIDUAL-OFFER') > -1) action = 'click_get_offer_bottom';
+        ga('importer.send', 'event', 'SalesOutRangeLanding', action, '');
+        window.open(_href);
+    });
+
+    $('.section.more a.btn.btn--green').click(function(e){
+        e.preventDefault();
+        _href = $(this).attr('href');
+        var unparsed = _href.toUpperCase();
+        var action = 'click_bottom_button';
+        if(unparsed.indexOf('SKODA-AVTO.RU') > -1) action = 'click_more_bottom';
+        if(unparsed.indexOf('/FINANCE/CALC') > -1) action = 'click_calc_bottom';
+        if(unparsed.indexOf('/ABOUT/INDIVIDUAL-OFFER') > -1) action = 'click_get_offer_bottom';
+        if(unparsed.indexOf('/ABOUT/TEST-DRIVE') > -1) action = 'click_test_drive_bottom';
+        ga('importer.send', 'event', 'SalesOutRangeLanding', action, '');
+        window.open(_href);
+    });
+}
+
+
+/*
+Для айфрейма if(self != top)
+Для не айфрейма if(self === top)
+Для подстроки в ссылке if (window.location.href.indexOf('skoda-avto.ru/specials/pages/skoda-range') > -1)
+*/
+
+/* Всё ниже перенести в новый брендсайт в ГТМ! */
+
+/** IFRAME auto-height **/
+if(self != top) {
+    function KDXonElementHeightChange(elm, callback) {
+        function getTrustedHeight(elm) {
+            var scrollHeight = elm.scrollHeight;
+            var offsetHeight = elm.offsetHeight;
+            var clientHeight = elm.clientHeight;
+
+            if (scrollHeight !== offsetHeight) {
+                var items = document.querySelectorAll('body > *');
+                var calculatedScrollHeight = 0;
+                if (items.length) {
+                    for (var i = 0; i < items.length; i += 1) {
+                        calculatedScrollHeight += items[i].offsetHeight;
+                    }
+                    scrollHeight = calculatedScrollHeight;
+                }
+            }
+
+            return Math.max(
+                scrollHeight, //elm.documentElement.scrollHeight,
+                offsetHeight, //elm.documentElement.offsetHeight,
+                clientHeight//, elm.documentElement.clientHeight
+            );
+        }
+
+        var lastHeight = getTrustedHeight(elm);
+
+        (function run(lastHeight) {
+
+            newHeight = getTrustedHeight(elm);
+            //console.log(lastHeight,newHeight);
+            if (lastHeight != newHeight)
+                callback(newHeight);
+            lastHeight = newHeight;
+
+
+            if (elm.onElementHeightChangeTimer)
+                clearTimeout(elm.onElementHeightChangeTimer);
+
+
+            elm.onElementHeightChangeTimer = setTimeout(function(){run(lastHeight);}, 200);
+        })(lastHeight);
+    }
+
+    KDXonElementHeightChange(document.body, function (height) {
+        if (typeof window.KDXpushOutside === "function") {
+            window.KDXpushOutside('SetHeight', height, '0', '0', '0');
+        }
+    });
+}

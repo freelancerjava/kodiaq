@@ -27,7 +27,7 @@ export const Video = () => {
                     </>
                     :
                     <video controls autoPlay onClick={() => setvideo(false)}>
-                        <source src="https://webgate.skoda-avto.ru/upload/sbs/Model/Kodiaq/overview/kodiaq_video.mp4" type="video/mp4" />
+                        <source src="/video/kodiaq_video.mp4" type="video/mp4" />
                     </video>}
 
             </div >

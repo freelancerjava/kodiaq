@@ -1,6 +1,5 @@
 {
   "name": "kodiaq",
-  "homepage": "https://freelancerjava.github.io/kodiaq",
   "version": "1.0.0",
   "private": true,
   "dependencies": {

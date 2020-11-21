@@ -1,0 +1,240 @@
+window.iteraction_with_interface = false;
+window.ADSPEND_offer = false;
+
+$(document).ready(function () {
+    $('[name=city]').change(function () {
+        var dealerSelect = $('[name=dealer]'), city = $(this).val();
+        dealerSelect.html('').append('<option value=""></option>');
+        if (city != '' && typeof(window.dealers[city] != 'undefined')) {
+            dealerSelect.removeAttr('disabled');
+            $.each(window.dealers[city], function(k, dealer){
+                dealerSelect.append('<option value="'+dealer.xml_id+'">'+dealer.name+'</option>');
+            });
+        }
+    });
+});
+
+$('body').on('ymapDealerChoose', function(e, code){
+    $.each(window.dealers, function(city, dealers){
+        var cont = true;
+        $.each(dealers, function(k, dealer){
+            if(dealer.xml_id == code){
+                $('[name=city]').val(city).change();
+                $('[name=dealer]').val(code);
+                cont = false;
+                return false;
+            }
+        });
+        return cont;
+    });
+
+    //ADSPEND - ремаркетинг система от PhD
+    window.ADSPEND_MANAGER_INTERVAL = setInterval(function () {
+        if(typeof(KDXpushOutside) !== 'undefined') {
+
+            var arForm = $('#tdForm').serializeArray();
+            var offer = 'notSet';
+            switch(arForm[0].value) {
+                case '2': //rapid
+                    offer = '20002';
+                    break;
+                case '1': //octavia
+                    offer = '10002';
+                    break;
+                /*case '3': //yeti
+                    offer = 'new-yeti';
+                    break;*/
+                case '5': //kodiaq
+                    offer = '30002';
+                    break;
+                case '4': //superb
+                    offer = '40002';
+                    break;
+            }
+            //console.log(offer);
+            if(offer !== 'notSet' && window.iteraction_with_interface === false) {
+                KDXpushOutside('Adspend', '5a9512b79ff80756dfe8abd6', offer, '_', '_');
+                window.ADSPEND_offer = offer;
+                //KDXpushOutside('Adspend','5a9512b79ff80756dfe8abd6', 'EXC10002!!', '_', '_');
+                clearInterval(window.ADSPEND_MANAGER_INTERVAL);
+            }
+            if(window.iteraction_with_interface) {
+                clearInterval(window.ADSPEND_MANAGER_INTERVAL);
+            }
+        }
+    }, 100);
+});
+
+$('#testDriveForm').on('submit', function(){
+    var form = $(this);
+    var arForm = $(this).serializeArray();
+    var model = 'notSet';
+    switch(arForm[0].value) {
+        case '2':
+            model = 'rapid-fl';
+            break;
+        case '1':
+            model = 'octavia-new';
+            break;
+        case '3':
+            model = 'new-yeti';
+            break;
+        case '5':
+            model = 'kodiaq';
+            break;
+        case '4':
+            model = 'new-superb';
+            break;
+        case '8':
+            model = 'karoq';
+            break;
+        case '9':
+            model = 'rapid-fl-new';
+            break;
+
+    }
+
+    if(typeof(KDXpushOutside) !== 'undefined') {
+        KDXpushOutside('KDXsimpleGA', 'importer', 'Testdrive', 'submit', model);
+        KDXpushOutside('KDXsimpleGA', 'test', 'Testdrive', 'submit', model);
+        KDXpushOutside('KDXmetrics','yandex', 'Testdrive_submit', '_', '_');
+    }
+
+    var formFields = $(this).serialize();
+    if(typeof(window.UTM_STUFF) === 'string') formFields += '&utm_stuff='+window.UTM_STUFF;
+    $.ajax({
+        type: 'post',
+        dataType: 'json',
+        data: formFields,
+        url: $(this).attr('action'),
+        success: function(data){
+            $('.error').removeClass('error');
+            if(typeof(data.errors) != 'undefined'){
+                console.log(data.errors);
+                $.each(data.errors, function(name, value){
+                    $('[name='+name+']').parent().addClass("error");
+                });
+            }else{
+                form.hide();
+                form.siblings('.form-success').show();
+
+                if(typeof(KDXpushOutside) !== 'undefined') {
+                    KDXpushOutside('KDXga','importer', 'Testdrive', 'success', model);
+                    KDXpushOutside('KDXga','test', 'Testdrive', 'success', model);
+                    KDXpushOutside('KDXmetrics','yandex', 'Testdrive_succsess', '_', '_');
+                    KDXpushOutside('KDXpushFloodlight','ru_sk01', model, '_', '_');
+                }
+
+                if(window.location.search.substring(1).indexOf('formsOctaviaProfit') + 1) {
+                    //KDXga('importer', 'Testdrive', 'experiment', model);
+                    KDXpushOutside('KDXsimpleGA','importer', 'Testdrive', 'experiment', model);
+                }
+
+                if(window.ADSPEND_offer_second !== false) {
+                    KDXpushOutside('Adspend', '5a9512b79ff80756dfe8abd6', 'EXC'+window.ADSPEND_offer_second+'!!', '_', '_');
+                }
+            }
+        },
+        error: function(xhr, str){
+            console.log(formFields);
+            console.log('Возникла ошибка: ' + xhr);
+            console.log('Возникла ошибка: ' + str);
+        }
+    });
+
+    function getTrustedHeight(elm) {
+        var scrollHeight = elm.scrollHeight;
+        var offsetHeight = elm.offsetHeight;
+        var clientHeight = elm.clientHeight;
+
+        if (scrollHeight !== offsetHeight) {
+            var items = document.querySelectorAll('body > *');
+            var calculatedScrollHeight = 0;
+            if (items.length) {
+                for (var i = 0; i < items.length; i += 1) {
+                    calculatedScrollHeight += items[i].offsetHeight;
+                }
+                scrollHeight = calculatedScrollHeight;
+            }
+        }
+
+        return Math.max(
+            scrollHeight,
+            offsetHeight,
+            clientHeight
+        );
+    }
+
+    var scrollHeight = getTrustedHeight(document.body);
+
+    if(typeof(KDXpushOutside) !== 'undefined') {
+        KDXpushOutside('SetHeight', scrollHeight, '0', '0', '0');
+    }
+    return false;
+});
+
+$(document).on('click', '.test-drive-container', function(){
+    var arForm = $('#testDriveForm').serializeArray();
+    var model = 'notSet';
+    switch(arForm[0].value) {
+        case '2':
+            model = 'rapid-fl';
+            break;
+        case '1':
+            model = 'octavia-new';
+            break;
+        case '3':
+            model = 'new-yeti';
+            break;
+        case '5':
+            model = 'kodiaq';
+            break;
+        case '4':
+            model = 'new-superb';
+            break;
+    }
+    if(!window.iteraction_with_interface) {
+        if(typeof(KDXpushOutside) !== 'undefined') {
+            KDXpushOutside('KDXsimpleGA','importer', 'Testdrive', 'interaction', model);
+            KDXpushOutside('KDXsimpleGA','test', 'Testdrive', 'interaction', model);
+            KDXpushOutside('KDXmetrics','yandex', 'Testdrive_interaction', '_', '_');
+        }
+    }
+
+    window.iteraction_with_interface = true;
+
+    if(window.ADSPEND_offer === false) {
+        window.ADSPEND_MANAGER_INTERVAL = setInterval(function () {
+            if (typeof(KDXpushOutside) !== 'undefined') {
+
+                var offer = 'notSet';
+                switch (arForm[2].value) {
+                    case '2': //rapid
+                        offer = '20009';
+                        break;
+                    case '1': //octavia
+                        offer = '10009';
+                        break;
+                    /*case '3': //yeti
+                     offer = 'new-yeti';
+                     break;*/
+                    case '5': //kodiaq
+                        offer = '30009';
+                        break;
+                    case '4': //superb
+                        offer = '40009';
+                        break;
+                }
+                //console.log(offer);
+                if (offer !== 'notSet' && window.iteraction_with_interface === true) {
+                    KDXpushOutside('Adspend', '5a9512b79ff80756dfe8abd6', offer, '_', '_');
+                    window.ADSPEND_offer = offer;
+                    clearInterval(window.ADSPEND_MANAGER_INTERVAL);
+                }
+                if(window.iteraction_with_interface) {
+                    clearInterval(window.ADSPEND_MANAGER_INTERVAL);
+                }
+            }
+        }, 100);
+    }
+});

@@ -15,13 +15,13 @@ const TestDrive = () => {
                                     <div class="form-input form-input--select">
                                         <select name="model_id" data-placeholder="Выберите модель ŠKODA *" data-select2-id="1" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
                                             <option></option>
-                                            <option value="9">Новый RAPID</option>
-                                            <option value="2">RAPID</option>
-                                            <option value="1">OCTAVIA</option>
+                                            {/* <option value="9">Новый RAPID</option> */}
+                                            {/* <option value="2">RAPID</option> */}
+                                            {/* <option value="1">OCTAVIA</option> */}
                                             <option value="5" selected="selected" data-select2-id="3">KODIAQ</option>
-                                            <option value="4">SUPERB</option>
-                                            <option value="8">KAROQ</option>
-                                            <option value="10">Новая OCTAVIA</option>
+                                            {/* <option value="4">SUPERB</option> */}
+                                            {/* <option value="8">KAROQ</option> */}
+                                            {/* <option value="10">Новая OCTAVIA</option> */}
                                         </select>
                                         <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style={{ width: "101px" }}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-model_id-1g-container">
                                             {/* <span class="select2-selection__rendered" id="select2-model_id-1g-container" role="textbox" aria-readonly="true" title="KODIAQ">KODIAQ</span> */}
@@ -36,19 +36,19 @@ const TestDrive = () => {
                                 <div class="form-row">
                                     <div class="form-input form-input--select">
                                         <select name="city" data-placeholder="Выберите город *" data-select2-id="4" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-                                            <option data-select2-id="0"></option>
-                                            <option value="tashkent">Ташкент</option>
-                                            <option value="samarqand">Самарканд</option>
-                                            <option value="buxoro">Бухара</option>
-                                            <option value="jizzax">Джиззак</option>
-                                            <option value="termiz">Термез</option>
-                                            <option value="qarshi">Карши</option>
-                                            <option value="andijon">Андижан</option>
-                                            <option value="namangan">Наманган</option>
-                                            <option value="fargona">Фергана</option>
-                                            <option value="navoiy">Наваи</option>
-                                            <option value="xiva">Хива</option>
-                                            <option value="nukus">Нукус</option>                                            
+                                            <option ></option>
+                                            <option selected="selected" data-select2-id="1" value="tashkent">Ташкент</option>
+                                            {/* <option value="samarqand">Самарканд</option> */}
+                                            {/* <option value="buxoro">Бухара</option> */}
+                                            {/* <option value="jizzax">Джиззак</option> */}
+                                            {/* <option value="termiz">Термез</option> */}
+                                            {/* <option value="qarshi">Карши</option> */}
+                                            {/* <option value="andijon">Андижан</option> */}
+                                            {/* <option value="namangan">Наманган</option> */}
+                                            {/* <option value="fargona">Фергана</option> */}
+                                            {/* <option value="navoiy">Наваи</option> */}
+                                            {/* <option value="xiva">Хива</option> */}
+                                            {/* <option value="nukus">Нукус</option>                                             */}
                                         </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="5" style={{ width: "127px" }}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-city-sh-container">
                                             {/* <span class="select2-selection__rendered" id="select2-city-sh-container" role="textbox" aria-readonly="true">
                                                 <span class="select2-selection__placeholder">Выберите город *</span>
@@ -60,7 +60,8 @@ const TestDrive = () => {
                                 <div class="form-row">
                                     <div class="form-input form-input--select">
                                         <select name="dealer" data-placeholder="Выберите дилера *" disabled="" data-select2-id="7" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
-                                            <option data-select2-id="9"></option>
+                                            {/* <option data-select2-id="9"></option> */}
+                                            <option value="1" selected="selected" data-select3-id="1">Driver's Village</option>
                                         </select><span class="select2 select2-container select2-container--default select2-container--disabled" dir="ltr" data-select2-id="8" style={{ width: "2px" }}><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-labelledby="select2-dealer-4o-container">
                                             {/* <span class="select2-selection__rendered" id="select2-dealer-4o-container" role="textbox" aria-readonly="true">
                                                 <span class="select2-selection__placeholder">Выберите дилера *</span>

@@ -1,0 +1,501 @@
+/**
+ * Created by kodix on 25.06.14.
+ */
+
+window.KDX = function(handler){
+    if ( ! (typeof (handler) == "function" || handler instanceof Function))
+    {
+        if(typeof BX != "undefined"){
+            BX.debug('KDX READY: not a function! ', handler);
+        }
+        else{
+            console.error('KDX READY: not a function! ', handler)
+        }
+    }
+    else
+    {
+        if (KDX.inited)
+            handler.call(document);
+        else
+            $(document).on('kdxInit',handler);
+    }
+};
+KDX.inited=false;
+KDX.PreloaderCount=0;
+KDX.Option = function(metod,name,value,is_new){
+    if(typeof this.options === "undefined"){
+        this.options={
+            NeedAjaxLoadClass: 'ajax_load',
+            NeedPopupContentAjaxClass: 'ajax_popup',
+            NeedAppendFromAjaxClass: 'ajax_append',
+            NeedPushHistoryClass: 'push_history',
+            NeedRemoveInBaseBeforeAppend: '.ajax_remove_in_base_before_append',
+            NeedRemoveInNewBeforeAppend: '.ajax_remove_in_new_before_append',
+            AjaxPreloaderHTML: '<div id="kdx_preloader" style="position: fixed; z-index: 9999; width: 100%; height: 100%; background: #333333; background: rgba(0,0,0,.75);color: #fff;text-align: center">please wait...</div>',
+            AjaxPreloaderSelector: '#kdx_preloader',
+            ParentSelectorForPreloader: 'body',
+            NeedWrapInAppendMode: false,
+            DontShowPreload: "dontShowPreload"
+        }
+    }
+    switch (metod){
+        case 'getOption':
+            return this.options[name];
+            break;
+
+        case 'setOption':
+            if(is_new!==true && typeof this.options[name] == "undefined"){
+                return false;
+            }
+            this.options[name]=value;
+            return true;
+            break;
+
+        case 'getAllOption':
+        case undefined:
+            return this.options;
+            break;
+
+        default :
+            return undefined;
+            break;
+    }
+}
+KDX.setOption = function (name, value,is_new){
+    return KDX.Option('setOption',name, value,is_new)
+}
+KDX.getOption = function (name){
+    return KDX.Option('getOption',name)
+}
+KDX.showPreloader = function(){
+    if(!$("#kdx_preloader").length){
+        $(KDX.getOption('ParentSelectorForPreloader')).prepend(KDX.getOption('AjaxPreloaderHTML'))
+    }
+    KDX.PreloaderCount++;
+}
+KDX.hidePreloader= function(){
+    KDX.PreloaderCount=KDX.PreloaderCount>0?KDX.PreloaderCount-1:0;
+    if(!KDX.PreloaderCount){
+        $(KDX.getOption('AjaxPreloaderSelector')).remove();
+    }
+}
+
+KDX.ajax = function(url,options){
+    if(typeof options['dont_show_preload'] === "undefined"){
+        options['dont_show_preload']=false;
+    }
+    if(typeof options['dont_hide_preload'] === "undefined"){
+        options['dont_hide_preload']=false;
+    }
+    if(!options['dont_show_preload']){
+        KDX.showPreloader()
+    }
+    options=jQuery.ajaxSetup( {}, options )
+    if(typeof options['complete'] === "undefined"){
+        if(!options['dont_hide_preload']){
+            options['complete']=KDX.hidePreloader
+        }
+    }
+    else{
+        var TempFunction = options['complete']
+        options['complete']=function(jqXHR,textStatus ){
+            TempFunction(jqXHR,textStatus);
+            if(!this['dont_hide_preload']){
+                KDX.hidePreloader();
+            }
+        }
+    }
+    $.ajax(url,options);
+
+}
+
+KDX.popup=function(options){
+    KDX.removePopup();
+    var html='<div class="kdx_popup_shadow"></div>';
+    html+='<div class="kdx_popup">';
+    html+='<a class="kdx_remove_popup" href="#">Закрыть</a>';
+    if(typeof options['head'] !== "undefined")
+        html+='<div class="kdx_popup_head">'+options['head']+'</div>';
+    if(typeof options['content'] !== "undefined")
+        html+='<div class="kdx_popup_content">'+options['content']+'</div>';
+    if(typeof options['foot'] !== "undefined")
+        html+='<div class="kdx_popup_foot">'+options['foot']+'</div>';
+    html+='</div>';
+    $("body").append(html);
+}
+
+KDX.removePopup=function(){
+    $(".kdx_popup_shadow").remove();
+    $(".kdx_popup").remove();
+}
+/**
+ *
+ * @param page
+ * @param selector
+ */
+KDX.setPage = function (page, selector, restore_history){
+    /*var loc=location.protocol + '//' + location.pathname //location.host + location.pathname.substring(0,location.pathname.substring(1).lastIndexOf('/')+1)+'/';
+    var new_search=location.search.replace(/PAGEN_.+=.+$/g, "");
+    if(new_search && new_search!="?"){
+        new_search+="&"+page.replace("?", "");
+    }else{
+        new_search=page;
+    }
+    history.pushState(null, null, new_search);
+    */
+    var data = {};
+    if(typeof selector == "string"){
+        if($(selector).length == 1){
+            data = {selector: selector}
+        }
+    }
+    if(typeof restore_history == "string"){
+        data['restore_history'] = restore_history
+    }
+    window.prevent_statechange = true;
+    var cur_url = window.History.getState().hash
+    window.History.replaceState(data,$('title').text())
+    window.prevent_statechange = true;
+    window.History.pushState(data, $('title').text(), page)
+}
+
+/**
+ * устанавливаем стандартные обработчики
+ */
+KDX.jquery_binds = function(){
+
+    // Bind to popstate
+    $(window).bind("statechange", function(e) {
+
+        //необходимо для push через api
+        if (window.prevent_statechange) {
+            window.prevent_statechange = false;
+            return;
+        }
+
+        var State = window.History.getState();
+
+        // log that this event was fired, and the current URL
+        if (window.console && window.console.log) {
+            BX.debug("popstate", State, window.location.href);
+        }
+        if(typeof State.data.selector == "string"){
+            if($(State.data.selector).length){
+                var restore_history = 'SMALL';
+                if(typeof State.data.restore_history == "string"){
+                    restore_history = State.data.restore_history
+                }
+                KDX.ajax(State.url,{
+                    data:{RESTORE_HISTORY: restore_history},
+                    type:'POST',
+                    success:function(data){
+                        $(State.data.selector).html($($.trim(data)))
+                        KDX.initPlugins();
+                    }
+                })
+            }
+        }
+
+        $(document).trigger('kdxStateChange',State);
+
+    });
+    $(document).ready(function(){
+        var ajaxHandler = function () {
+            if ($(this).prop("tagName") != 'SPAN' && $(this).prop("tagName") != 'A' && $(this).prop("tagName") != 'SELECT') {
+                return;
+            }
+            if ($(this).prop("tagName") == 'SELECT' && $(this).attr('multiple')) {
+                console.error('Select with ajax logic can not be "multiple"');
+                return;
+            }
+            var ajax_wrapper = $(this).attr('data-ajax-response-wrapper');
+            var ajax_append = $(this).hasClass(KDX.getOption('NeedAppendFromAjaxClass'))
+            var ajax_popup = $(this).hasClass(KDX.getOption('NeedPopupContentAjaxClass'))
+            var history_need = $(this).hasClass(KDX.getOption('NeedPushHistoryClass'))
+            var dont_show_preload = $(this).hasClass(KDX.getOption('DontShowPreload'))
+
+            var url = $(this).attr('href');
+            if ($(this).prop("tagName") == 'SPAN') {
+                url = $(this).attr('data-href')
+            }
+            if ($(this).prop("tagName") == 'SELECT') {
+                url = $(this).find('option:selected').attr('value')
+            }
+            if (!url) {
+                console.warn('Empty url');
+            }
+
+
+            if (!ajax_wrapper && !ajax_popup) {
+                console.error('Undefined data-ajax-response-wrapper')
+            }
+            else if ($(ajax_wrapper).length != 1 && !ajax_popup) {
+                console.error('Wrong count ajax wrapper')
+            }
+            else if (history_need && !KDX.history_work && !ajax_append) {
+                /**
+                 * если необходимо изменить ссылку но нет возможности это сделать, отменяем ajax загрузку
+                 */
+                if($(this).prop("tagName") != 'A'){
+                    if (url){
+                        window.location=url;
+                    }
+                }
+                return true;
+            }
+            else {
+                KDX.ajax(url, {
+                    dont_show_preload: dont_show_preload,
+                    success: function (data) {
+                    try {
+                        var content = $.trim(data);
+                        if (ajax_append) {
+
+                            if(KDX.getOption('NeedWrapInAppendMode')) {
+                                content = $('<div></div>').html(content);
+                            }else{
+                                content = $(content);
+                            }
+
+                            content.find( KDX.getOption('NeedRemoveInNewBeforeAppend')).each(function(){
+                                $( this).remove();
+                            });
+
+                            $(ajax_wrapper).find(KDX.getOption('NeedRemoveInBaseBeforeAppend')).remove()
+                            $(ajax_wrapper).append( content.html() )
+                            if (history_need && KDX.history_work) {
+                                KDX.setPage(url,ajax_wrapper)
+                            }
+                        }
+                        else if(ajax_popup){
+                            KDX.popup({content:data})
+                        }
+                        else {
+                            $(ajax_wrapper).html(content)
+                            if (history_need) {
+                                KDX.setPage(url,ajax_wrapper)
+                            }
+                        }
+                        options = {
+                            ajax_append: ajax_append,
+                            ajax_wrapper: ajax_wrapper,
+                            history_need: history_need,
+                            ajax_popup: ajax_popup
+                        }
+                        $(document).trigger('kdxAfterAjaxLoad',[url, data, options]);
+
+                        KDX.initPlugins();
+                    }catch (e){
+                        console.error(e)
+                        KDX.hidePreloader()
+                    }
+                }})
+            }
+            return false;
+        };
+        $(document).on('click','a.'+KDX.getOption('NeedAjaxLoadClass')+',span.'+KDX.getOption('NeedAjaxLoadClass'), ajaxHandler);
+        $(document).on('change','select.'+KDX.getOption('NeedAjaxLoadClass'), ajaxHandler);
+
+        $(document).on('submit','form.'+KDX.getOption('NeedAjaxLoadClass'),function(){
+            var validation_function = $(this).attr('data-validation-function');
+            if(typeof validation_function == "string" && $.trim(validation_function)){
+                validation_function=$.trim(validation_function)
+                if(typeof window[validation_function] == "function"){
+                    if(window[validation_function](this) === false){
+                        return false;
+                    }
+                }
+            }
+            var url=$(this).attr("action");
+            var method = $.trim($(this).attr("method")).toLowerCase();
+            var ajax_wrapper = $(this).attr('data-ajax-response-wrapper');
+            var history_need = $(this).hasClass(KDX.getOption('NeedPushHistoryClass'));
+            var ajax_replace_wrapper = $(this).attr('data-ajax-response-replace') == 'Y' || $(this).attr('data-ajax-response-replace') == 'y';
+            var form = this;
+
+
+
+            if(method != 'get' && method != 'post'){
+                method='get'
+            }
+
+            var strData = $(this).serialize()
+
+            KDX.ajax(url, {
+                type:method,
+                dataType:"html",
+                data:strData,
+                success:function(data){
+                    if($.trim(data)==""){
+                        KDX.showPreloader();
+                        window.location.reload();
+                    }
+                    else if(ajax_wrapper && $(ajax_wrapper).length == 1){
+                        if(ajax_replace_wrapper){
+                            $(ajax_wrapper).replaceWith(data)
+                        }
+                        else{
+                            $(ajax_wrapper).html(data)
+                        }
+                    }
+                    else if($.trim(data)=="DO_NOTHING"){
+                        //сказано ничего не делать, ничего не делаем
+                    }
+                    else{
+                        KDX.popup({content:data});
+                    }
+
+                    if (history_need && method == 'get') {
+                        KDX.setPage(url + '?' + strData,ajax_wrapper)
+                    }
+                    else if (history_need){
+                        //Для форм отправленных постом, но которым нужно выставить адрес страницы.
+                        $(document).trigger('kdxPostFormPushHistory',[form, url, strData, data]);
+                    }
+
+                    $(document).trigger('kdxPostForm',[form, url, method, strData, data]);
+
+                    KDX.initPlugins();
+                }
+            });
+            return false;
+        });
+
+        $(document).on('click','.kdx_popup_shadow, .kdx_remove_popup',function(){
+            KDX.removePopup();
+            return false;
+        });
+
+
+        $(document).on('change','form .kdx_submit_on_change',function(){
+            $(this).closest('form').submit()
+        });
+
+        KDX.initPlugins();
+
+
+    })
+}
+
+
+KDX.initPlugins=function(){
+    $(document).trigger('kdxInitPlugins')
+}
+
+KDX.init = function(){
+    KDX.history_work = !!(window.history && history.pushState);
+    KDX.jquery_binds();
+    $(document).trigger('kdxInit')
+    KDX.inited=true;
+}
+
+KDX.init();
+
+KDX.removeURLParameter = function (url, parameter) {
+    var urlparts= url.split('?');
+    if (urlparts.length>1) {
+        var prefix= encodeURIComponent(parameter)+'=';
+        var pars= urlparts[1].split(/[&;]/g);
+        for (var i= pars.length; i-- > 0;) {
+            if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                pars.splice(i, 1);
+            }
+            else if(pars[i].length == 0){
+                pars.splice(i, 1);
+            }
+        }
+        url= urlparts[0]+(pars.length>0?'?':'')+pars.join('&');
+        return url;
+    } else {
+        return url;
+    }
+}
+
+KDX.declension=function(number, titles)
+{
+    cases = [2, 0, 1, 1, 1, 2];
+    return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];
+}
+
+KDX.uniqid = function (pr, en) {
+    /*так uniquid() - результат 52643b81917b3
+     или вот так uniqid('prefix_') - результат prefix_52643bb682821
+     и даже вот так uniqid('prefix_', true) - результат prefix_52643bdf3b1fb7.38568327*/
+    var pr = pr || '', en = en || false, result, us;
+
+    this.seed = function (s, w) {
+        s = parseInt(s, 10).toString(16);
+        return w < s.length ? s.slice(s.length - w) :
+            (w > s.length) ? new Array(1 + (w - s.length)).join('0') + s : s;
+    };
+
+    result = pr + this.seed(parseInt(new Date().getTime() / 1000, 10), 8)
+        + this.seed(Math.floor(Math.random() * 0x75bcd15) + 1, 5);
+
+    if (en) result += (Math.random() * 10).toFixed(8).toString();
+
+    return result;
+};
+
+KDX.getQueryVariable = function(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]).replace(/\+/g, ' ');
+        }
+    }
+    return undefined;
+}
+
+KDX.setCookie = function(name, value, options) {
+    options = options || {};
+
+    var expires = options.expires;
+
+    if (typeof expires == "number" && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires*1000);
+        expires = options.expires = d;
+    }
+    if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+    }
+
+    value = encodeURIComponent(value);
+
+    var updatedCookie = name + "=" + value;
+
+    for(var propName in options) {
+        updatedCookie += "; " + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
+}
+
+KDX.deleteCookie = function(name) {
+    KDX.setCookie(name, "", { expires: -1 })
+}
+
+// возвращает cookie с именем name, если есть, если нет, то undefined
+KDX.getCookie = function(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+KDX.formatMoney=function(value, precision, thousand_delimiter, dec_delimenter){
+    precision = isNaN(precision = Math.abs(precision)) ? 2 : precision,
+        thousand_delimiter = thousand_delimiter == undefined ? "." : thousand_delimiter,
+        dec_delimenter = dec_delimenter == undefined ? "," : dec_delimenter,
+        s = value < 0 ? "-" : "",
+        i = parseInt(value = Math.abs(+value || 0).toFixed(precision)) + "",
+        j = (j = i.length) > 3 ? j % 3 : 0;
+    return s + (j ? i.substr(0, j) + dec_delimenter : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + dec_delimenter) + (precision ? thousand_delimiter + Math.abs(value - i).toFixed(precision).slice(2) : "");
+}

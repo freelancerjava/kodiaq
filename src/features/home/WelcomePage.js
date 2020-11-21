@@ -54,7 +54,7 @@ export default function WelcomePage() {
       node: beautyRef
     },
     {
-      text: "Галлерея",
+      text: "Галерея",
       url: "#gallery",
       node: galRef
     },
@@ -77,7 +77,7 @@ export default function WelcomePage() {
       node: beautyRef
     },
     {
-      text: "Галлерея",
+      text: "Галерея",
       url: "#gallery",
       node: galRef
     }
@@ -294,7 +294,7 @@ export default function WelcomePage() {
 
                 <div className="skoda-tools-sector" data-tools-count="5">
                   <div className="tools-wrapper">
-                    <a className="skoda-tool-wrapper gtm-cta-link" href="https://cc.skoda-auto.com/svk/sk-SK" target="_blank"
+                    <a className="skoda-tool-wrapper gtm-cta-link" href="#" target="_blank"
                       data-action-cta="Website-ImporterFooterModule-Tool link" data-tools-count="5">
                       <div className="hover-overshadow"></div>
                       <div className="tool-info-wrapper">
@@ -450,10 +450,10 @@ export default function WelcomePage() {
                     <a href="mailto:infolinka@skoda-auto.sk">Отправить нам письмо</a>
                   </div>
                   <div className="collumn-item">
-                    <a href="https://www.skoda-auto.sk/o-nas/formular" className="footer-link" target="_blank">Форма обратной связи</a>
+                    <a href="#test" className="footer-link" target="_blank">Форма обратной связи</a>
                   </div>
                   <div className="collumn-item">
-                    <a href="https://www.skoda-auto.sk/servis/asistencna-sluzba" className="footer-link"
+                    <a href="#" className="footer-link"
                       target="_blank">Ассистенты</a>
                   </div>
                 </div>
@@ -468,15 +468,15 @@ export default function WelcomePage() {
                       <div className="col-lg-4 col-md-6">
                         <div className="collumn-headline">Клиентам ŠKODA</div>
                         <div className="links-collumn">
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/modely/kodiaq/kodiaq#NotFound"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Прайс-листы</a></div>
-                          <div className="collumn-item"><a
-                            href="https://clg.skoda-auto.com/api/Link?tool=sk-sk_Skladova_vozidla&amp;culture=sk-SK&amp;target=modelderivative&amp;bid=654&amp;instancename=svk&amp;salesprogram=svk&amp;mbv=NS7&amp;modelcode=NS&amp;bodycode=66000&amp;carline=66000"
+                          <div className="collumn-item">
+                            <a href="#"
                             className="footer-link">ŠKODA коннект</a></div>
-                          <div className="collumn-item"><a
-                            href="https://clg.skoda-auto.com/api/Link?tool=sk-sk_Siet&amp;predaj=1&amp;culture=sk-SK&amp;target=modelderivative&amp;bid=654&amp;instancename=svk&amp;salesprogram=svk&amp;mbv=NS7&amp;modelcode=NS&amp;bodycode=66000&amp;carline=66000"
+                          <div className="collumn-item">
+                            <a href="#"
                             className="footer-link">Ассистенты</a></div>
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/ponuka/cenniky-a-katalogy"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Почему ŠKODA</a></div>
 
                         </div>
@@ -485,32 +485,32 @@ export default function WelcomePage() {
                         <div className="collumn-headline">ŠKODA сервис</div>
                         <div className="links-collumn">
                           <div className="collumn-item"><a
-                            href="https://clg.skoda-auto.com/api/Link?tool=sk-sk_Siet&amp;servis=1&amp;culture=sk-SK&amp;target=modelderivative&amp;bid=654&amp;instancename=svk&amp;salesprogram=svk&amp;mbv=NS7&amp;modelcode=NS&amp;bodycode=66000&amp;carline=66000"
+                            href="#"
                             className="footer-link">Аксесуары</a></div>
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/servis/objednavka-do-servisu"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Гарантия</a></div>
                           <div className="collumn-item"><a
-                            href="https://clg.skoda-auto.com/api/Link?tool=Ownersmanuals&amp;culture=sk-SK&amp;target=modelderivative&amp;bid=654&amp;instancename=svk&amp;salesprogram=svk&amp;mbv=NS7&amp;modelcode=NS&amp;bodycode=66000&amp;carline=66000"
+                            href="#"
                             className="footer-link">Запчасти ŠKODA</a></div>
                         </div>
                       </div>
                       <div className="col-lg-4 col-md-6">
                         <div className="collumn-headline">О компании</div>
                         <div className="links-collumn">
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/servis/prehlad-zaruk"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Контакты</a></div>
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/servis/spoluucast"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Социальные проекты</a></div>
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/servis/kalendar-starostlivosti"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">История ŠKODA</a></div>
                         </div>
                       </div>
                       <div className="col-lg-4 col-md-6">
                         <div className="collumn-headline">Пресс-центр</div>
                         <div className="links-collumn">
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/o-nas/vedenie-spolocnosti"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Новости</a></div>
-                          <div className="collumn-item"><a href="https://www.skoda-auto.sk/o-nas/dokumentacia"
+                          <div className="collumn-item"><a href="#"
                             className="footer-link">Журнал ŠKODA Style</a></div>
                         </div>
                       </div>
@@ -566,7 +566,7 @@ export default function WelcomePage() {
                             </a>
                           </div>
                           <div className="situated-left">
-                            <span className="copyright">©2017 ŠKODA AUTO Slovensko s.r.o.</span>
+                            <span className="copyright">©2020 SKODA AUTO UZBEKISTAN s.r.o.</span>
                           </div>
                         </div>
                         <div className="clearing"></div>

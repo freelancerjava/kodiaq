@@ -1,0 +1,722 @@
+﻿/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+/* SKODA GLOBAL */
+div.k2ng-module-ImporterTrimsModule {
+  text-align: center;
+  margin: 20px 0;
+}
+div.k2ng-module-ImporterTrimsModule .item-wrapper .carousel-item-img {
+  width: 100%;
+  height: auto;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-hidden {
+  display: none !important;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 {
+  width: 100%;
+  position: relative;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls {
+    height: 100%;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls {
+    height: 100%;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-prev,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-prev {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100% 100%;
+  z-index: 9;
+  cursor: pointer;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.desktop-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.desktop-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-left-desktop-control.9ccea682c80adc0cb02890aeaf9abd66.svg');
+  margin-top: -55px;
+  height: 110px;
+  width: 52px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.tablet-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.tablet-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-left-tablet-control.47088f8bdc19386f8c0da63ee136c3e2.svg');
+  margin-top: -30px;
+  height: 60px;
+  width: 32px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.mobile-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.mobile-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-left-tablet-control.47088f8bdc19386f8c0da63ee136c3e2.svg');
+  margin-top: -20px;
+  height: 40px;
+  width: 22px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.sa-carousel-control-topped,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-prev.sa-carousel-control-topped {
+  top: 20px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-next,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -30px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 100% 100%;
+  z-index: 9;
+  cursor: pointer;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-next.desktop-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-next.desktop-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-right-desktop-control.4f9b2e823b0da3907fa45710b7538fdc.svg');
+  background-size: 100% 100%;
+  margin-top: -55px;
+  height: 110px;
+  width: 52px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-next.tablet-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-next.tablet-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-right-tablet-control.7d881e2b3f4f729af44f4c0a445c7949.svg');
+  background-size: 100% 100%;
+  margin-top: -30px;
+  height: 60px;
+  width: 32px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-next.mobile-control,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-next.mobile-control {
+  background-image: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.icons.svg.carousel-right-mobile-control.1af6bb3246a406a02f66c89cd67c0422.svg');
+  background-size: 100% 100%;
+  margin-top: -20px;
+  height: 40px;
+  width: 22px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-carousel-controls .sa-carousel-control.sa-carousel-next.sa-carousel-control-topped,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-carousel-controls .sa-carousel-control.sa-carousel-next.sa-carousel-control-topped {
+  top: 20px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots {
+  position: absolute;
+  z-index: 2;
+  width: 20% !important;
+  margin-left: 40% !important;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li {
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li .sa-carousel-bullet-nav-point,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li .sa-carousel-bullet-nav-point {
+    width: 8px;
+    height: 8px;
+    background: #aaafb2;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li.slick-active .sa-carousel-bullet-nav-point,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li.slick-active .sa-carousel-bullet-nav-point {
+    background: #fff !important;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots {
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li {
+    display: inline-block;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li .sa-carousel-bullet-nav-point,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li .sa-carousel-bullet-nav-point {
+    width: 8px;
+    height: 8px;
+    background: #7f7f7f;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots > li.slick-active .sa-carousel-bullet-nav-point,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots > li.slick-active .sa-carousel-bullet-nav-point {
+    background: #fff !important;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots {
+    bottom: 10px;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel.slick-initialized ul.slick-dots,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel.slick-initialized ul.slick-dots {
+    bottom: 10px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img {
+    position: relative;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img {
+    position: relative;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img picture,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img picture {
+  width: 100%;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img picture img,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .img-wrapper .carousel-item-img picture img {
+  width: 100%;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .sa-image-linear-bottom-gradient,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .sa-image-linear-bottom-gradient {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC43Ii8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.7) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.7) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.7) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.7) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .sa-image-linear-bottom-gradient,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .sa-image-linear-bottom-gradient {
+    display: none;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .sa-image-bottom-left-gradient,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .sa-image-bottom-left-gradient {
+  background: url('https://az749841.vo.msecnd.net/modulesassets/sfv4/Assets.img.darkening-gradient-bottom-left.c35fa752f33863568c2d6bd8c1ed6d67.png') no-repeat left bottom;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .sa-image-bottom-left-gradient,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .sa-image-bottom-left-gradient {
+    display: none;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data {
+  width: 100%;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data {
+    left: 60px;
+  }
+}
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data {
+    left: 20px;
+  }
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data {
+    position: absolute;
+    bottom: 30px;
+    z-index: 9;
+    color: #fff !important;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data a:not(.btn),
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data a:not(.btn) {
+    color: #fff !important;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data a:not(.btn):hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data a:not(.btn):hover {
+    color: #fff !important;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data {
+    padding: 5px 0 60px 0;
+    text-align: center;
+    color: #000 !important;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .tagline,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .tagline {
+  font-size: 16px;
+  line-height: 26px;
+  font-style: italic;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .headline,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .headline {
+  text-transform: uppercase;
+  margin-top: 10px !important;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .prize,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .prize {
+  display: inline;
+  padding-right: 3px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .prize .suma,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .prize .suma {
+  display: inline;
+  font-weight: 800;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text {
+  font-size: 14px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text a,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text a {
+  text-decoration: underline;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text a:hover,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .prize-wrapper .text a:hover {
+  text-decoration: underline;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons {
+  margin-top: 10px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button {
+  margin-left: 7px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+    font-weight: 800;
+    padding: 10px 20px;
+    min-width: 110px;
+    font-size: 14px;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active {
+    color: #fff;
+    background-color: #000;
+    border-color: #fff;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled],
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled],
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:hover,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:focus,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled.active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled.active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled].active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled].active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.active {
+    background-color: #fff;
+  }
+}
+@media (max-width: 659px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+    font-weight: 800;
+    padding: 10px 20px;
+    min-width: 110px;
+    font-size: 14px;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active {
+    color: #000;
+    background-color: #fff;
+    border-color: #000;
+  }
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled],
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled],
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:hover,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:hover,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:focus,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:focus,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled]:active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button:active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled.active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.disabled.active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled].active,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button[disabled].active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.active,
+  fieldset[disabled] div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .buttons .secondary-button.active {
+    background-color: #000;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper {
+  font-size: 18px;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 80px;
+  }
+}
+@media (max-width: 999px) and (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper,
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .icon,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .icon {
+  font-size: 32px;
+  position: relative;
+  top: 10px;
+  padding-right: 10px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .emisions,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .emisions {
+  padding-right: 15px;
+  border-right: 1px solid #ddd;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .aditional-ifno,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .aditional-ifno {
+  padding-left: 15px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .mobile-add-line,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .mobile-add-line {
+  padding-top: 10px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .mobile-add-line a,
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-wrapper2 .sa-trims-carousel .sa-carousel-slick-item .data .required-info-wrapper .mobile-add-line a {
+  font-weight: 800;
+  text-decoration: underline;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary {
+  text-align: left;
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary {
+    overflow: hidden;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item {
+  padding-right: 0;
+  padding-left: 0;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item .sa-trims-table--headline {
+  font-size: 16px;
+  line-height: 26px;
+  border-bottom: 1px solid #b4b4b4;
+  padding: 10px 0 10px 30px;
+  font-weight: 800;
+  margin: 0;
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item .sa-trims-table--headline {
+    text-align: center;
+    padding: 7px 0 6px 30px !important;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item ul {
+  list-style: none;
+  padding-top: 11px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item ul li {
+  position: relative;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-carousel-slick-item ul li:before {
+  color: #b4b4b4;
+  content: "■";
+  position: absolute;
+  left: -1em;
+  top: 0;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary .sa-trims-carousels-secondary-right {
+    margin-left: -1px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-carousels-secondary li {
+  padding: 3px 10px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo {
+  font-size: 16px;
+  margin: 15px 0;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .prize-from {
+  font-size: 18px;
+  line-height: 28px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .sa-trims-priceinfo-price {
+  color: #4ba82e;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 800;
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .sa-trims-priceinfo-price {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .sa-trims-priceinfo-price .disclaimer-index {
+  position: relative;
+  left: 2px;
+}
+@media (min-width: 660px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .sa-trims-priceinfo-price .disclaimer-index {
+    top: -20px;
+  }
+}
+@media (max-width: 659.5px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo .sa-trims-priceinfo-price .disclaimer-index {
+    top: -15px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo a {
+  font-size: 16px;
+  display: inline-block;
+  margin-left: 7px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-priceinfo a:hover {
+  text-decoration: none;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-maintable {
+  text-align: left;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-maintable th {
+  padding-left: 30px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-maintable li {
+  list-style-type: square;
+  color: #b4b4b4;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-maintable li .li_content {
+  color: #000;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-more {
+  font-weight: 800;
+  margin: 20px 0;
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper {
+  text-align: center;
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 20px 0 25px 0;
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs {
+  /* 
+        Use this mixin to create styled tabs. There are two variants:
+        1: primary
+        2: secondary
+    */
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li {
+  border: 1px solid #cccccc;
+  color: #000;
+  background: #fff;
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li.active {
+  background-color: #4ba82e;
+  border-color: #4ba82e;
+  color: #fff;
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li:hover {
+  border-color: #cccccc !important;
+  background-color: #f0f0f0 !important;
+  color: #000 !important;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 800;
+    margin: 0 8px 15px 8px;
+    padding: 11px 25px;
+    border-radius: 25px;
+    min-width: 100px;
+  }
+}
+@media (max-width: 999.5px) {
+  div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: 800;
+    margin: 0 5px 10px 5px;
+    padding: 3px 20px;
+    border-radius: 25px;
+    min-width: 70px;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .tabs-wrapper ul.sa-tabs li {
+  display: inline-block;
+  width: auto;
+  cursor: pointer;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-mobile-categories {
+  margin: 20px 0;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-mobile-categories .sa-form-selectbox-wrapper {
+  display: block;
+  text-align: left;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-mobile-categories .sa-form-selectbox-wrapper .icon {
+  float: right;
+  position: relative;
+  top: 5px;
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-mobile-categories .sa-form-selectbox-wrapper .sa-form-element-option-list {
+  width: calc(100% + 2px);
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-row-content {
+  position: relative;
+  border: 1px solid #b4b4b4;
+  padding: 0;
+}
+@media (min-width: 1000px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-row-content {
+    margin: 0 10px;
+    width: calc(83.333% - 20px) !important;
+  }
+}
+@media (max-width: 999.5px) {
+  div.k2ng-module-ImporterTrimsModule .sa-trims-row-content {
+    margin: 0 10px;
+    width: calc(100% - 20px) !important;
+  }
+}
+div.k2ng-module-ImporterTrimsModule .sa-trims-row-content .cols-divider {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  background: #b4b4b4;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vZHVsZS1zdHlsZXMubGVzcyIsIkY6LzAxLVYyL193b3JrLzcvcy9Ta29kYS5LMk5HLlBsdWdpbnMvU2l0ZVByb3RvdHlwZXMvU2tvZGEuSzJORy5QbHVnaW5zLlNpdGVQcm90b3R5cGVzLkltcG9ydGVyL0Fzc2V0cy9sZXNzL21peGlucy9za29kYS1nbG9iYWwubGVzcyIsIkY6LzAxLVYyL193b3JrLzcvcy9Ta29kYS5LMk5HLlBsdWdpbnMvU2l0ZVByb3RvdHlwZXMvU2tvZGEuSzJORy5QbHVnaW5zLlNpdGVQcm90b3R5cGVzLkltcG9ydGVyL0Fzc2V0cy9sZXNzL21peGlucy9lbGVtZW50cy5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFFQSxHQUFHO0VBQ0Msa0JBQUE7RUFDQSxjQUFBOztBQUZKLEdBQUcsZ0NBSUMsY0FDSTtFQUNJLFdBQUE7RUFDQSxZQUFBOztBQVBaLEdBQUcsZ0NBV0M7RUFDSSx3QkFBQTs7QUFaUixHQUFHLGdDQWVDO0FBZkosR0FBRyxnQ0FlOEI7RUFDekIsV0FBQTtFQUNBLGtCQUFBOztBQWpCUixHQUFHLGdDQWVDLDRCQUlJO0FBbkJSLEdBQUcsZ0NBZThCLDZCQUl6QjtFQUNJLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLE1BQUE7RUFDQSxXQUFBOztBQUVBLFFBQW1DO0VBQW5DLEdBekJULGdDQWVDLDRCQUlJO0VBTUksR0F6QlQsZ0NBZThCLDZCQUl6QjtJQU9RLFlBQUE7OztBQUdKLFFBQXlDO0VBQXpDLEdBN0JULGdDQWVDLDRCQUlJO0VBVUksR0E3QlQsZ0NBZThCLDZCQUl6QjtJQVdRLFlBQUE7OztBQUlBLEdBbENiLGdDQWVDLDRCQUlJLHNCQWNJLHFCQUNLO0FBQUQsR0FsQ2IsZ0NBZThCLDZCQUl6QixzQkFjSSxxQkFDSztFQUNHLGtCQUFBO0VBQ0EsT0FBQTtFQUNBLFFBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0EsMEJBQUE7RUFDQSxVQUFBO0VBQ0EsZUFBQTs7QUFFQSxHQTVD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 */

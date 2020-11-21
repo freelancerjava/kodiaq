@@ -37,8 +37,17 @@ const Nav = ({ menu, scrollToNode, minimenu }) => {
                                     </li>
                                 )
                             })}
+                            <li className="models buy-btn">
+                                {/* <a href={"#"}></a> */}
+                                {/* <div className="buy-btn"> */}
+                                <a href="https://online.skoda-avto.uz">Купить автомобиль Онлайн</a>
+                                {/* </div> */}
+                            </li>
                         </ul>
                     </div>
+
+                    <span class="btn btn-sa-primary fixed"><a href="https://online.skoda-avto.uz">Купить Онлайн</a></span>
+
 
                     <div className="right-section ">
                         {/* <div className="important-links">
